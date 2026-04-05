@@ -3,7 +3,7 @@ name: Deploy Hugo site to Pages
 on:
   push:
     branches:
-      - main  # あなたのメインブランチ名に合わせてください（main or master）
+      - main
 
 permissions:
   contents: read
