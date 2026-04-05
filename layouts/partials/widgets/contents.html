@@ -1,0 +1,50 @@
+{{ if .IsPage }}
+<div class="bg-white rounded-xl shadow-sm mb-4 overflow-hidden dark:bg-warmgray-900">
+  <div class="px-5 py-4 border-b border-gray-100 dark:border-warmgray-700">
+    <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+      Contents
+    </p>
+  </div>
+  <div class="p-5 toc-widget">
+    {{ if .TableOfContents }}
+      <div class="text-sm prose dark:prose-invert">
+        {{ .TableOfContents }}
+      </div>
+    {{ else }}
+      <p class="text-sm text-gray-400 text-center">No headings found</p>
+    {{ end }}
+  </div>
+</div>
+
+<style>
+.toc-widget nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.toc-widget nav li {
+  margin-bottom: 0.5rem;
+}
+.toc-widget nav ul ul {
+  padding-left: 1.25rem;
+  margin-top: 0.5rem;
+}
+.toc-widget nav li a {
+  color: #4a5568;
+  text-decoration: none;
+  display: block;
+  line-height: 1.4;
+  transition: all 0.2s;
+}
+.toc-widget nav li a:hover {
+  color: #00bcff;
+  transform: translateX(4px);
+}
+.dark .toc-widget nav li a {
+  color: #cbd5e0;
+}
+.dark .toc-widget nav li a:hover {
+  color: #00bcff;
+}
+</style>
+{{ end }}

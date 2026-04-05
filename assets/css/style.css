@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "hugo_stats.json";
+
+/* フォントの定義（マウントした静的ファイルを参照） */
+@font-face {
+  font-family: 'LINE Seed JP';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/font-files/files/line-seed-jp-japanese-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'LINE Seed JP';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url('/font-files/files/line-seed-jp-japanese-700-normal.woff2') format('woff2');
+}
+
+@theme {
+  --font-sans: "LINE Seed JP", sans-serif;
+  --color-warmgray-600: #52585b;
+  --color-warmgray-700: #3f4446;
+  --color-warmgray-800: #27292a;
+  --color-warmgray-900: #181a1b;
+}
+
+:root {
+  font-family: var(--font-sans);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark:root {
+  --pagefind-ui-primary: #ffffff;
+  --pagefind-ui-text: #ffffff;
+  --pagefind-ui-background: #181a1b;
+  --pagefind-ui-border: #181a1b;
+  --pagefind-ui-tag: #181a1b;
+  --pagefind-ui-border-width: 2px;
+  --pagefind-ui-border-radius: 4px;
+  --pagefind-ui-image-border-radius: 4px;
+}
+
+.prose a {
+  color: #00bcff;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* 本文の最初の子要素の上の余白を詰める */
+.prose > :first-child {
+  margin-top: 0 !important;
+}
+
+/* BudouX 適用要素の改行設定 */
+.budoux-applied {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 目次トグルボタンのスタイル（位置と形状） */
+#toc-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  border-radius: 0.75rem; /* rounded-xl相当 */
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+/* 中見出し (h2) の下に線を引く */
+.prose h2 {
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem !important;
+}
+
+.dark .prose h2 {
+  border-bottom-color: var(--color-warmgray-700);
+}
+
+/* --- カスタムスタイル --- */
+
+/* モバイルでの本文フォントサイズ調整 (目標: 1行約22文字) */
+@media (max-width: 640px) {
+  .prose {
+    font-size: 14px !important; /* iPhone 12(390px)等の一般的なモバイル画面で1行約22文字になるよう計算 */
+    line-height: 1.8;      /* 読みやすさ向上のため少し広めに設定 */
+  }
+}

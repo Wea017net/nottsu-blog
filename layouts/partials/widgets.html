@@ -1,0 +1,25 @@
+<div
+  class="{{ if .Site.Params.widgets.mobile }}
+    col-span-3 lg:col-span-1 mt-4
+  {{ else }}
+    hidden lg:block lg:col-span-1 mt-4
+  {{ end }} {{ if .IsPage }} lg:sticky lg:top-[90px] self-start {{ end }}"
+>
+  {{ $root := . }}
+  {{ $widgets := (default .Site.Params.widgets.widgets .Params.widgets) }}
+  
+  {{ range $widget := $widgets }}
+    {{/* 記事ページ(.IsPage)の場合、特定のウィジェットを非表示にする */}}
+    {{ $show := true }}
+    {{ if $root.IsPage }}
+      {{ if in (slice "pagefind" "archive" "category" "tags" "recent") $widget }}
+        {{ $show = false }}
+      {{ end }}
+    {{ end }}
+    
+    {{ if $show }}
+      {{ $p := printf "widgets/%s.html" $widget }}
+      {{ partial $p $root }}
+    {{ end }}
+  {{ end }}
+</div>

@@ -1,0 +1,23 @@
+{
+  "name": "blonde",
+  "version": "0.0.3",
+  "description": "Blonde, A simple theme using Tailwind CSS.",
+  "main": "index.js",
+  "repository": "https://github.com/opera7133/Blonde",
+  "author": "wamo <ainznino@pm.me>",
+  "license": "MIT",
+  "scripts": {
+    "build": "hugo && npx pagefind --site public",
+    "dev": "hugo server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.16",
+    "@tailwindcss/typography": "^0.5.19",
+    "pagefind": "^1.4.0",
+    "tailwindcss": "^4.1.16"
+  },
+  "dependencies": {
+    "@fontsource/line-seed-jp": "^5.2.2"
+  }
+}

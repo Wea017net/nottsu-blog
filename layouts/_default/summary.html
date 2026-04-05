@@ -1,0 +1,42 @@
+<div
+  class="bg-white w-full lg:max-w-full lg:flex mt-4 rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-warmgray-900"
+>
+  {{ if .Site.Params.post.thumbnail }}
+    {{ if .Params.image }}
+      <img
+        alt="thumbnail"
+        id="thumb"
+        class="{{ .Site.Params.post.thumbnail_width }} {{ .Site.Params.post.thumbnail_height }} object-cover"
+        src="{{ .Params.image | relURL }}"
+      />
+    {{ else }}
+      {{ if .Site.Params.post.noimage }}
+        <img
+          alt=""
+          id="thumb"
+          class="{{ .Site.Params.post.thumbnail_width }} {{ .Site.Params.post.thumbnail_height }} object-cover"
+          src="{{ "/img/default.jpg" | relURL }}"
+        />
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  <div class="relative p-5 leading-normal max-w-full w-full">
+    <a href="{{ .Permalink }}" class="group">
+      <div
+        class="text-gray-900 font-bold text-xl mb-2 dark:text-white leading-snug group-hover:text-sky-500 transition-colors duration-200"
+      >
+        {{ .Title }}
+      </div>
+      {{ with .Description }}
+      <p class="text-gray-600 text-sm leading-relaxed pb-8 dark:text-gray-400">
+        {{ . }}
+      </p>
+      {{ end }}
+    </a>
+    <time
+      class="text-xs text-gray-500 absolute items-center right-0 bottom-0 pb-4 pr-5 dark:text-gray-500 flex gap-1"
+    >
+      {{ partial "icon.html" (dict "name" "schedule" "class" "text-xs") }}{{ .Date.Format "2006/01/02" }}
+    </time>
+  </div>
+</div>

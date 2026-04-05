@@ -1,0 +1,83 @@
+baseURL = 'https://example.org/'
+locale = 'ja-JP'
+hasCJKLanguage = true
+title = 'Nottsu Blog'
+theme = 'Blonde'
+
+[params]
+base_color = "bg-gray-800"
+description = "Blonde theme for Hugo."
+paginator_pages = 5
+archive_dropdown = "true"
+tagsLimit = 20
+recentLimit = 5
+darkmode = "light"
+mainSections = ["post"]
+
+[params.widgets]
+display = true
+mobile = true
+widgets = ["pagefind", "archive", "category", "tags", "social", "recent", "contents", "aboutme"]
+
+[taxonomies]
+category = "categories"
+tag = "tags"
+archive = "archives"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[build]
+  [build.buildStats]
+  enable = true
+  [[build.cachebusters]]
+  source = 'assets/notwatching/hugo_stats\.json'
+  target = 'css'
+
+[module]
+  [[module.mounts]]
+  source = 'static'
+  target = 'static'
+
+  [[module.mounts]]
+  source = 'layouts'
+  target = 'layouts'
+
+  [[module.mounts]]
+  source = 'content'
+  target = 'content'
+
+  [[module.mounts]]
+  source = 'data'
+  target = 'data'
+
+  [[module.mounts]]
+  source = 'i18n'
+  target = 'i18n'
+
+  [[module.mounts]]
+  source = 'archetypes'
+  target = 'archetypes'
+
+  [[module.mounts]]
+  source = 'assets'
+  target = 'assets'
+
+  [[module.mounts]]
+  source = 'node_modules'
+  target = 'assets/node_modules'
+
+  [[module.mounts]]
+  source = 'node_modules/@fontsource/line-seed-jp'
+  target = 'static/font-files'
+
+  [[module.mounts]]
+  disableWatch = true
+  source = 'hugo_stats.json'
+  target = 'assets/notwatching/hugo_stats.json'

@@ -1,0 +1,15 @@
+/* ダークモード用の色の定義 */
+body.dark-mode {
+    background-color: #1a1a1a; /* 暗いグレー */
+    color: #f0f0f0;            /* 明るい文字色 */
+}
+
+/* ボタンの見た目（お好みで） */
+#mode-toggle {
+    padding: 10px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}

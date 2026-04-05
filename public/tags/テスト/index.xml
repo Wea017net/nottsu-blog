@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>テスト on Nottsu Blog</title>
+    <link>https://example.org/tags/%E3%83%86%E3%82%B9%E3%83%88/</link>
+    <description>Recent content in テスト on Nottsu Blog</description>
+    <generator>Hugo</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Fri, 03 Apr 2026 01:28:00 +0900</lastBuildDate>
+    <atom:link href="https://example.org/tags/%E3%83%86%E3%82%B9%E3%83%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>はじめに：Nottsu Blogへようこそ！</title>
+      <link>https://example.org/post/my-first-post/</link>
+      <pubDate>Fri, 03 Apr 2026 01:28:00 +0900</pubDate>
+      <guid>https://example.org/post/my-first-post/</guid>
+      <description>&lt;h1 id=&#34;nottsu-blogへようこそ&#34;&gt;Nottsu Blogへようこそ！&lt;/h1&gt;&#xA;&lt;p&gt;これは、HugoとBlondeテーマを使用して作成されたテスト記事です。&lt;/p&gt;&#xA;&lt;h2 id=&#34;本文のテスト&#34;&gt;本文のテスト&lt;/h2&gt;&#xA;&lt;p&gt;ここにはテキストを入力できます。Blondeテーマはシンプルで読みやすいデザインが特徴です。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;太字のテスト&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;斜体のテスト&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://gohugo.io&#34;&gt;リンクのテスト&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;コードブロックのテスト&#34;&gt;コードブロックのテスト&lt;/h3&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;console&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;log&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello, Nottsu Blog!&amp;#34;&lt;/span&gt;);&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;画像のテスト&#34;&gt;画像のテスト&lt;/h3&gt;&#xA;&lt;p&gt;もし画像があれば、以下のように表示されます。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1350&amp;amp;q=80&#34; alt=&#34;サンプル画像&#34;&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;これから記事を更新していくのが楽しみですね！&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

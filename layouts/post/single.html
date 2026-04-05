@@ -1,0 +1,188 @@
+{{ define "header_css" }}{{ end }}
+
+{{ define "main" }}
+<div class="grid grid-cols-3 gap-4">
+  {{ if .Site.Params.widgets.display }}
+  <main class="col-span-3 lg:col-span-2 dark:text-white">
+  {{ else }}
+  <main class="col-span-3 dark:text-white">
+  {{ end }}
+    <article class="bg-white dark:bg-warmgray-900 rounded-xl shadow-sm p-6 my-4">
+      <h1 class="mb-4 text-4xl font-bold tracking-tight leading-tight" {{ "data-pagefind-body" | safeHTMLAttr }}>{{.Title}}</h1>
+      {{ with .Description }}
+      <div class="article-description text-gray-600 dark:text-gray-400 font-medium leading-relaxed mb-4">
+        {{ . }}
+      </div>
+      {{ end }}
+      <aside id="meta">
+        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
+          <section>
+            <h4 id="date" class="inline-flex items-center gap-1">
+              {{ partial "icon.html" (dict "name" "schedule" "class" "text-sm") }}{{ .Date.Format "2006/01/02" }}
+            </h4>
+          </section>
+          {{ with .Params.tags }}
+          <div id="tags" class="inline-flex flex-wrap items-center gap-1.5">
+            {{ partial "icon.html" (dict "name" "sell" "class" "text-sm") }}
+            {{ range . }}
+            <a href='{{ ($.Site.GetPage (printf "/tags/%s" .)).RelPermalink }}' class="{{ $.Site.Params.base_color | default "bg-gray-800" }} text-white rounded-full px-3 py-0.5 text-xs font-medium hover:opacity-80 transition-opacity duration-150">{{ . }}</a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </aside>
+
+
+      {{ if .Params.image }}
+      <img class="my-2" src="{{ .Params.image | absURL }}">
+      {{ end }}
+      
+      {{ if and (and (.Site.Params.ad.googleAdSense) (.Site.Params.ad.postTop)) (.Site.Params.ad.adslot) }}
+      <ins class="adsbygoogle" style="display:block" data-ad-client="{{.Site.Params.ad.googleAdSense}}"
+        data-ad-slot="{{.Site.Params.ad.adslot}}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      {{ end }}
+
+      <div class="prose md:prose-base lg:prose-lg max-w-none dark:prose-invert mt-2">{{.Content}}</div>
+
+      {{ if and (and (.Site.Params.ad.googleAdSense) (.Site.Params.ad.postBottom)) (.Site.Params.ad.adslot) }}
+      <ins class="adsbygoogle" style="display:block" data-ad-client="{{.Site.Params.ad.googleAdSense}}"
+        data-ad-slot="{{.Site.Params.ad.adslot}}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      {{ end }}
+      <aside id="meta">
+        {{ with .Params.categories }}
+        <hr class="my-4 border-gray-100 dark:border-warmgray-700">
+        <div id="categories" class="flex flex-wrap items-center gap-2">
+          {{ partial "icon.html" (dict "name" "folder" "class" "text-base text-gray-400") }}
+          {{ range . }}
+          <a href='{{ ($.Site.GetPage (printf "/categories/%s" .)).RelPermalink }}' class="{{ $.Site.Params.base_color | default "bg-gray-800" }} text-white rounded-full px-3 py-1 text-sm font-medium hover:opacity-80 transition-opacity duration-150">{{ . }}</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </aside>
+    </article>
+    {{ partial "share.html" . }}
+    {{ if or .PrevInSection .NextInSection }}
+    <div class="bg-white dark:bg-warmgray-900 rounded-xl shadow-sm p-4 my-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="col-span-1">
+          {{ with .PrevInSection }}
+          <a class="previous" href="{{.Permalink}}">
+            <div class="flex items-center gap-2 p-3 rounded-lg border-2 border-gray-200 hover:border-sky-400 dark:border-warmgray-700 dark:hover:border-sky-500 transition-colors duration-200 text-sm font-medium text-gray-700 dark:text-gray-300">
+              {{ partial "icon.html" "keyboard_arrow_left" }}<span class="truncate">{{.Title}}</span>
+            </div>
+          </a>
+          {{ end }}
+        </div>
+        <div class="col-span-1">
+          {{ with .NextInSection }}
+          <a class="next" href="{{.Permalink}}">
+            <div class="flex items-center justify-end gap-2 p-3 rounded-lg border-2 border-gray-200 hover:border-sky-400 dark:border-warmgray-700 dark:hover:border-sky-500 transition-colors duration-200 text-sm font-medium text-gray-700 dark:text-gray-300">
+              <span class="truncate">{{.Title}}</span>{{ partial "icon.html" "keyboard_arrow_right" }}
+            </div>
+          </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ end }}
+    {{ partial "comments.html" . }}
+  </main>
+
+  <button id="toc-toggle" class="lg:hidden {{ .Site.Params.base_color | default "bg-gray-800" }} text-white shadow-lg hover:opacity-80 transition-all duration-300 flex items-center justify-center">
+    {{ partial "icon.html" (dict "name" "list" "class" "text-2xl") }}
+  </button>
+
+  <div id="toc-modal" class="fixed inset-0 z-[100] hidden">
+    <div id="toc-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+    <div id="toc-modal-content" class="absolute bottom-0 left-0 right-0 max-h-[75vh] bg-white dark:bg-warmgray-900 rounded-t-3xl p-6 shadow-2xl overflow-y-auto transform translate-y-full transition-transform duration-300 ease-out">
+      <div class="flex justify-between items-center mb-6 sticky top-0 bg-white dark:bg-warmgray-900 py-1">
+        <h3 class="text-lg font-bold dark:text-white">目次</h3>
+        <button id="toc-close" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+           {{ partial "icon.html" (dict "name" "close" "class" "text-2xl") }}
+        </button>
+      </div>
+      <div class="toc-widget">
+        {{ if .TableOfContents }}
+          <div class="text-sm prose dark:prose-invert">
+            {{ .TableOfContents }}
+          </div>
+        {{ else }}
+          <p class="text-sm text-gray-400 text-center">No headings found</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      const toggleBtn = document.getElementById('toc-toggle');
+      const modal = document.getElementById('toc-modal');
+      const overlay = document.getElementById('toc-overlay');
+      const content = document.getElementById('toc-modal-content');
+      const closeBtn = document.getElementById('toc-close');
+
+      const openModal = () => {
+        modal.classList.remove('hidden');
+        // 少し遅らせてアニメーションを開始
+        setTimeout(() => {
+          overlay.classList.remove('opacity-0');
+          overlay.classList.add('opacity-100');
+          content.classList.remove('translate-y-full');
+          content.classList.add('translate-y-0');
+        }, 10);
+        document.body.style.overflow = 'hidden'; // 背景スクロール固定
+      };
+
+      const closeModal = () => {
+        overlay.classList.remove('opacity-100');
+        overlay.classList.add('opacity-0');
+        content.classList.remove('translate-y-0');
+        content.classList.add('translate-y-full');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+        }, 300);
+        document.body.style.overflow = '';
+      };
+
+      if (toggleBtn) toggleBtn.addEventListener('click', openModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (overlay) overlay.addEventListener('click', closeModal);
+
+      // 目次のリンクをクリックしたら自動で閉じる
+      const tocLinks = content.querySelectorAll('a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', closeModal);
+      });
+    });
+  </script>
+
+  <script type="module">
+    import { loadDefaultJapaneseParser } from 'https://esm.sh/budoux';
+    const parser = loadDefaultJapaneseParser();
+    
+    const applyBudouX = (selector) => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(el => {
+        parser.applyToElement(el);
+        el.classList.add('budoux-applied');
+      });
+    };
+
+    window.addEventListener('load', () => {
+      applyBudouX('article h1');
+      applyBudouX('.article-description');
+      applyBudouX('.prose');
+    });
+  </script>
+  
+  {{ if .Site.Params.widgets.display }}
+  {{ partial "widgets.html" . }}
+  {{ end }}
+</div>
+{{ end }}
