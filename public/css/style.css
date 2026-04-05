@@ -312,14 +312,14 @@
   .z-5 {
     z-index: 5;
   }
+  .z-100 {
+    z-index: 100;
+  }
   .z-999 {
     z-index: 999;
   }
   .z-9999 {
     z-index: 9999;
-  }
-  .z-\[100\] {
-    z-index: 100;
   }
   .order-0 {
     order: 0;
@@ -1272,9 +1272,6 @@
   .bg-sky-50 {
     background-color: var(--color-sky-50);
   }
-  .bg-sky-500 {
-    background-color: var(--color-sky-500);
-  }
   .bg-sky-600 {
     background-color: var(--color-sky-600);
   }
@@ -1680,13 +1677,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-sky-100);
-      }
-    }
-  }
-  .hover\:bg-sky-600 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-sky-600);
       }
     }
   }

@@ -1,0 +1,52 @@
+<head>
+  {{- partial "analytics" . -}}
+  <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ site.Title }}</title>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1"
+  />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="{{ "img/favicon/apple-touch-icon.png" | relURL }}"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="{{ "img/favicon/favicon-32x32.png" | relURL }}"
+  />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="16x16"
+    href="{{ "img/favicon/favicon-16x16.png" | relURL }}"
+  />
+  <link rel="shortcut icon" href="{{ "img/favicon/favicon.ico" | relURL }}" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta
+    property="og:title"
+    content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ site.Title }}{{ end }}"
+  />
+  {{ with resources.Get "css/style.css" }}
+    {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
+    {{ with . | css.TailwindCSS $opts }}
+      {{ if hugo.IsDevelopment }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" />
+      {{ else }}
+        {{ with . | fingerprint }}
+          <link
+            rel="stylesheet"
+            href="{{ .RelPermalink }}"
+            integrity="{{ .Data.Integrity }}"
+            crossorigin="anonymous"
+          />
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ partial "seo/print.html" . }}
+  {{ block "header_css" . }}{{ end }}
+  <i class="dark hidden"></i>
+</head>

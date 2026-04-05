@@ -13,6 +13,7 @@ tagsLimit = 20
 recentLimit = 5
 darkmode = "light"
 mainSections = ["post"]
+favicon = "/img/favicon/favicon.ico"
 
 [params.widgets]
 display = true
