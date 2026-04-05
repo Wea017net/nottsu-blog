@@ -1,0 +1,114 @@
+<footer class="{{ .Site.Params.base_color }} text-white p-6">
+  {{ if .Site.Menus.foot }}
+    <div
+      class="flex justify-center w-full md:flex md:flex-row sm:items-center sm:w-auto mb-4"
+    >
+      <div>
+        {{ range .Site.Menus.foot }}
+          <a
+            href="{{ .URL }}"
+            class="no-underline block sm:inline-block duration-200 text-white hover:opacity-50"
+          >
+            {{ .Name }}
+          </a>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+  <div class="container max-w-7xl mr-auto ml-auto">
+    <p>
+      &copy;
+      {{ now.Year }}
+      <a href="{{ .Site.BaseURL }}" class="duration-200 hover:opacity-50"
+        >{{ .Site.Title }}</a
+      >
+    </p>
+    <p>
+      Powered by
+      <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a
+      >, Theme
+      <a
+        href="https://github.com/opera7133/Blonde"
+        class="duration-200 hover:opacity-50"
+        >Blonde</a
+      >.
+    </p>
+    <p class="text-xs mt-1 opacity-80">
+      Font: <a href="https://seed.line.me/" class="duration-200 hover:opacity-50">LINE Seed JP</a> (SIL OFL 1.1)
+    </p>
+  </div>
+  {{ if .Site.Params.ad.googleAdSense }}
+  <script>
+    (function (window, document) {
+      function main() {
+        var ad = document.createElement('script');
+        ad.async = true;
+        ad.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ .Site.Params.ad.googleAdSense }}';
+        ad.crossOrigin = "anonymous"
+        var sc = document.getElementsByTagName('script')[0];
+        sc.parentNode.insertBefore(ad, sc);
+      }
+
+      var lazyLoad = false;
+      function onLazyLoad() {
+        if (lazyLoad === false) {
+          lazyLoad = true;
+          window.removeEventListener('scroll', onLazyLoad);
+          window.removeEventListener('mousemove', onLazyLoad);
+          window.removeEventListener('mousedown', onLazyLoad);
+          window.removeEventListener('touchstart', onLazyLoad);
+          window.removeEventListener('keydown', onLazyLoad);
+          main();
+        }
+      }
+      window.addEventListener('scroll', onLazyLoad);
+      window.addEventListener('mousemove', onLazyLoad);
+      window.addEventListener('mousedown', onLazyLoad);
+      window.addEventListener('touchstart', onLazyLoad);
+      window.addEventListener('keydown', onLazyLoad);
+      window.addEventListener('load', function () {
+        if (window.pageYOffset) {
+          onLazyLoad();
+          window.setTimeout(onLazyLoad, 3000)
+        }
+      });
+    })(window, document);
+  </script>
+  {{ end }}
+  <script>
+    function setDarkModeIcons(isDark) {
+      var moonIcon1 = document.getElementById("icon-moon");
+      var sunIcon1 = document.getElementById("icon-sun");
+      var moonIcon2 = document.getElementById("icon2-moon");
+      var sunIcon2 = document.getElementById("icon2-sun");
+      if (moonIcon1) moonIcon1.classList.toggle("hidden", isDark);
+      if (sunIcon1) sunIcon1.classList.toggle("hidden", !isDark);
+      if (moonIcon2) moonIcon2.classList.toggle("hidden", isDark);
+      if (sunIcon2) sunIcon2.classList.toggle("hidden", !isDark);
+    }
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (
+      document.documentElement.classList.contains("dark") ||
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      setDarkModeIcons(true);
+      document.documentElement.classList.add("dark");
+    } else {
+      setDarkModeIcons(false);
+      document.documentElement.classList.remove("dark");
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains("dark")) {
+        setDarkModeIcons(false);
+        document.documentElement.classList.remove("dark");
+        localStorage.theme = "light";
+      } else {
+        setDarkModeIcons(true);
+        document.documentElement.classList.add("dark");
+        localStorage.theme = "dark";
+      }
+    }
+  </script>
+</footer>
