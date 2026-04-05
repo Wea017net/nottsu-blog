@@ -23,6 +23,9 @@ jobs:
         with:
           hugo-version: 'latest'
           extended: true
+      - name: Grant permission to tailwindcss
+        run: chmod +x ./tailwindcss
+        continue-on-error: true
       - name: Build with Hugo
         run: hugo --minify
       - name: Upload artifact
