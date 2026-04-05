@@ -2465,7 +2465,7 @@
   text-decoration: underline;
   opacity: 0.8;
 }
-.prose > :first-child {
+.prose> :first-child {
   margin-top: 0 !important;
 }
 .budoux-applied {
@@ -2494,6 +2494,94 @@
     font-size: 14px !important;
     line-height: 1.8;
   }
+}
+.prose blockquote p:first-of-type::before, .prose blockquote p:last-of-type::after {
+  content: none !important;
+}
+.alert-blockquote {
+  border-left-width: 4px !important;
+  padding-left: 1rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 1rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  font-style: normal !important;
+  background-color: var(--alert-bg) !important;
+  border-left-color: var(--alert-border) !important;
+  color: var(--alert-text) !important;
+}
+.alert-blockquote p {
+  margin: 0 !important;
+  color: inherit !important;
+}
+.alert-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+  color: var(--alert-title) !important;
+}
+.alert-note {
+  --alert-bg: #eff6ff;
+  --alert-border: #3b82f6;
+  --alert-title: #2563eb;
+  --alert-text: #1e3a8a;
+}
+.dark .alert-note {
+  --alert-bg: rgba(59, 130, 246, 0.1);
+  --alert-border: #60a5fa;
+  --alert-title: #93c5fd;
+  --alert-text: #bfdbfe;
+}
+.alert-important {
+  --alert-bg: #f5f3ff;
+  --alert-border: #8b5cf6;
+  --alert-title: #7c3aed;
+  --alert-text: #4c1d95;
+}
+.dark .alert-important {
+  --alert-bg: rgba(139, 92, 246, 0.1);
+  --alert-border: #a78bfa;
+  --alert-title: #c4b5fd;
+  --alert-text: #ddd6fe;
+}
+.alert-warning {
+  --alert-bg: #fffbeb;
+  --alert-border: #f59e0b;
+  --alert-title: #d97706;
+  --alert-text: #78350f;
+}
+.dark .alert-warning {
+  --alert-bg: rgba(245, 158, 11, 0.1);
+  --alert-border: #fbbf24;
+  --alert-title: #fcd34d;
+  --alert-text: #fde68a;
+}
+.alert-tip {
+  --alert-bg: #f0fdf4;
+  --alert-border: #22c55e;
+  --alert-title: #16a34a;
+  --alert-text: #14532d;
+}
+.dark .alert-tip {
+  --alert-bg: rgba(34, 197, 94, 0.1);
+  --alert-border: #4ade80;
+  --alert-title: #86efac;
+  --alert-text: #bbf7d0;
+}
+.alert-caution {
+  --alert-bg: #fef2f2;
+  --alert-border: #ef4444;
+  --alert-title: #dc2626;
+  --alert-text: #7f1d1d;
+}
+.dark .alert-caution {
+  --alert-bg: rgba(239, 68, 68, 0.1);
+  --alert-border: #f87171;
+  --alert-title: #fca5a5;
+  --alert-text: #fecaca;
 }
 @property --tw-translate-x {
   syntax: "*";

@@ -10,6 +10,7 @@
   font-weight: 400;
   src: url('/font-files/files/line-seed-jp-japanese-400-normal.woff2') format('woff2');
 }
+
 @font-face {
   font-family: 'LINE Seed JP';
   font-style: normal;
@@ -53,7 +54,7 @@
 }
 
 /* 本文の最初の子要素の上の余白を詰める */
-.prose > :first-child {
+.prose> :first-child {
   margin-top: 0 !important;
 }
 
@@ -69,7 +70,8 @@
   bottom: 1.5rem;
   right: 1.5rem;
   z-index: 100;
-  border-radius: 0.75rem; /* rounded-xl相当 */
+  border-radius: 0.75rem;
+  /* rounded-xl相当 */
   width: 3.5rem;
   height: 3.5rem;
 }
@@ -90,7 +92,119 @@
 /* モバイルでの本文フォントサイズ調整 (目標: 1行約22文字) */
 @media (max-width: 640px) {
   .prose {
-    font-size: 14px !important; /* iPhone 12(390px)等の一般的なモバイル画面で1行約22文字になるよう計算 */
-    line-height: 1.8;      /* 読みやすさ向上のため少し広めに設定 */
+    font-size: 14px !important;
+    /* iPhone 12(390px)等の一般的なモバイル画面で1行約22文字になるよう計算 */
+    line-height: 1.8;
+    /* 読みやすさ向上のため少し広めに設定 */
   }
+}
+
+/* blockquoteのデフォルトの引用符を消す */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none !important;
+}
+
+/* GitHub Alerts のスタイル */
+.alert-blockquote {
+  border-left-width: 4px !important;
+  padding-left: 1rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 1rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  font-style: normal !important;
+  background-color: var(--alert-bg) !important;
+  border-left-color: var(--alert-border) !important;
+  color: var(--alert-text) !important;
+}
+
+.alert-blockquote p {
+  margin: 0 !important;
+  color: inherit !important;
+}
+
+.alert-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 0.5rem !important;
+  color: var(--alert-title) !important;
+}
+
+/* Note */
+.alert-note {
+  --alert-bg: #eff6ff;
+  --alert-border: #3b82f6;
+  --alert-title: #2563eb;
+  --alert-text: #1e3a8a;
+}
+
+.dark .alert-note {
+  --alert-bg: rgba(59, 130, 246, 0.1);
+  --alert-border: #60a5fa;
+  --alert-title: #93c5fd;
+  --alert-text: #bfdbfe;
+}
+
+/* Important */
+.alert-important {
+  --alert-bg: #f5f3ff;
+  --alert-border: #8b5cf6;
+  --alert-title: #7c3aed;
+  --alert-text: #4c1d95;
+}
+
+.dark .alert-important {
+  --alert-bg: rgba(139, 92, 246, 0.1);
+  --alert-border: #a78bfa;
+  --alert-title: #c4b5fd;
+  --alert-text: #ddd6fe;
+}
+
+/* Warning */
+.alert-warning {
+  --alert-bg: #fffbeb;
+  --alert-border: #f59e0b;
+  --alert-title: #d97706;
+  --alert-text: #78350f;
+}
+
+.dark .alert-warning {
+  --alert-bg: rgba(245, 158, 11, 0.1);
+  --alert-border: #fbbf24;
+  --alert-title: #fcd34d;
+  --alert-text: #fde68a;
+}
+
+/* Tip */
+.alert-tip {
+  --alert-bg: #f0fdf4;
+  --alert-border: #22c55e;
+  --alert-title: #16a34a;
+  --alert-text: #14532d;
+}
+
+.dark .alert-tip {
+  --alert-bg: rgba(34, 197, 94, 0.1);
+  --alert-border: #4ade80;
+  --alert-title: #86efac;
+  --alert-text: #bbf7d0;
+}
+
+/* Caution */
+.alert-caution {
+  --alert-bg: #fef2f2;
+  --alert-border: #ef4444;
+  --alert-title: #dc2626;
+  --alert-text: #7f1d1d;
+}
+
+.dark .alert-caution {
+  --alert-bg: rgba(239, 68, 68, 0.1);
+  --alert-border: #f87171;
+  --alert-title: #fca5a5;
+  --alert-text: #fecaca;
 }

@@ -33,7 +33,9 @@ jobs:
           sudo mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
 
       - name: Build with Hugo
-        run: hugo --minify
+        run: |
+          hugo
+          hugo --minify
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
