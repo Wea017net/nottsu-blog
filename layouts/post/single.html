@@ -94,8 +94,8 @@
     {{ partial "comments.html" . }}
   </main>
 
-  <button id="toc-toggle" class="lg:hidden {{ .Site.Params.base_color | default "bg-gray-800" }} text-white shadow-lg hover:opacity-80 transition-all duration-300 flex items-center justify-center">
-    {{ partial "icon.html" (dict "name" "list" "class" "text-2xl") }}
+  <button id="toc-toggle" class="lg:hidden {{ .Site.Params.base_color | default "bg-gray-800" }} text-white shadow-lg hover:opacity-80 transition-all duration-300 flex items-center justify-center" style="color: white !important;">
+    {{ partial "icon.html" (dict "name" "list" "class" "text-2xl text-white fill-white") }}
   </button>
 
   <div id="toc-modal" class="fixed inset-0 z-100 hidden">
@@ -103,8 +103,8 @@
     <div id="toc-modal-content" class="absolute bottom-0 left-0 right-0 max-h-[75vh] bg-white dark:bg-warmgray-900 rounded-t-3xl p-6 shadow-2xl overflow-y-auto transform translate-y-full transition-transform duration-300 ease-out">
       <div class="flex justify-between items-center mb-6 sticky top-0 bg-white dark:bg-warmgray-900 py-1">
         <h3 class="text-lg font-bold dark:text-white">目次</h3>
-        <button id="toc-close" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-           {{ partial "icon.html" (dict "name" "close" "class" "text-2xl") }}
+        <button id="toc-close" class="text-white hover:text-gray-300 dark:text-white dark:hover:text-gray-300" style="color: white !important;">
+           {{ partial "icon.html" (dict "name" "close" "class" "text-2xl text-white fill-white") }}
         </button>
       </div>
       <div class="toc-widget">
