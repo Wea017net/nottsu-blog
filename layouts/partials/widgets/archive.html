@@ -1,0 +1,42 @@
+<div
+  class="bg-white rounded-xl shadow-sm mb-4 overflow-hidden dark:bg-warmgray-900"
+>
+  <div class="px-5 py-4 border-b border-gray-100 dark:border-warmgray-700">
+    <p
+      class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400"
+    >
+      Archives
+    </p>
+  </div>
+  {{ if eq .Site.Params.archive_dropdown "false" }}
+    <div class="divide-y divide-gray-100 dark:divide-warmgray-700">
+      {{ range $name, $items := .Site.Taxonomies.archives }}
+        <a
+          class="flex items-center justify-between px-5 py-3 hover:bg-gray-50 dark:hover:bg-warmgray-800 transition-colors duration-150 text-sm text-gray-700 dark:text-gray-300"
+          href="{{ $.Site.BaseURL }}/archives/{{ $name | urlize | lower }}"
+          ><span>{{ $name }}</span
+          ><span class="text-xs text-gray-400 dark:text-gray-500"
+            >{{ $items.Count }}</span
+          ></a
+        >
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="p-4">
+      <select
+        class="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-warmgray-800 dark:border-warmgray-700 dark:text-gray-300"
+        name="archive"
+        onChange="location.href=value;"
+      >
+        <option>Select Archive...</option>
+        {{ range $name, $items := .Site.Taxonomies.archives }}
+          <option
+            value="{{ $.Site.BaseURL }}/archives/{{ $name | urlize | lower }}"
+          >
+            {{ $name }} ({{ $items.Count }})
+          </option>
+        {{ end }}
+      </select>
+    </div>
+  {{ end }}
+</div>
