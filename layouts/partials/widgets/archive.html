@@ -28,7 +28,7 @@
         name="archive"
         onChange="location.href=value;"
       >
-        <option>Select Archive...</option>
+        <option>アーカイブを選択...</option>
         {{ range $name, $items := .Site.Taxonomies.archives }}
           <option
             value="{{ $.Site.BaseURL }}/archives/{{ $name | urlize | lower }}"
