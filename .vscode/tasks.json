@@ -1,0 +1,45 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "hugo-build",
+			"type": "shell",
+			"command": "hugo",
+			"isBackground": false,
+			"problemMatcher": [
+				"$hugo"
+			],
+			"group": "build"
+		},
+		{
+			"label": "hugo-build-nodepath",
+			"type": "shell",
+			"command": "$env:Path = 'C:\\Program Files\\nodejs;' + $env:Path; hugo",
+			"isBackground": false,
+			"problemMatcher": [
+				"$hugo"
+			],
+			"group": "build"
+		},
+		{
+			"label": "build-and-pagefind",
+			"type": "shell",
+			"command": "$env:Path = 'C:\\Program Files\\nodejs;' + $env:Path; hugo; npx -y pagefind --site public",
+			"isBackground": false,
+			"problemMatcher": [
+				"$hugo"
+			],
+			"group": "build"
+		},
+		{
+			"label": "pagefind-generate",
+			"type": "shell",
+			"command": "$env:Path = 'C:\\Program Files\\nodejs;' + $env:Path; hugo; npx.cmd -y pagefind --site public",
+			"isBackground": false,
+			"problemMatcher": [
+				"$hugo"
+			],
+			"group": "build"
+		}
+	]
+}

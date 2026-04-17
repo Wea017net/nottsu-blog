@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ja-JP"><head>
-	<meta name="generator" content="Hugo 0.159.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.160.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
 <title>Nottsu Blog</title>
   <meta charset="utf-8" />
   <meta
@@ -26,6 +26,20 @@
   />
   <link rel="shortcut icon" href="/img/favicon/favicon.ico" />
   <meta name="theme-color" content="#ffffff" />
+  <style>
+    .summary-description {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .summary-description {
+        -webkit-line-clamp: 1;
+      }
+    }
+  </style>
   <meta
     property="og:title"
     content="Nottsu Blog"
@@ -46,27 +60,26 @@
 <meta name="description" content="Blonde theme for Hugo." />
 <meta property="og:site_name" content="Nottsu Blog" />
 <meta property="og:description" content="Blonde theme for Hugo." />
-<meta property="og:url" content="http://192.168.1.210:1313/" />
+<meta property="og:url" content="http://localhost:1313/" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="" />
 
-  <link rel="canonical" href="http://192.168.1.210:1313/" />
+  <link rel="canonical" href="http://localhost:1313/" />
 
 <meta name="twitter:description" content="Blonde theme for Hugo." />
-<meta property="article:published_time" content="2026-04-03T01:28:00&#43;09:00" />
-  <meta property="article:updated_time" content="2026-04-03T01:28:00&#43;09:00" />
+<meta property="article:published_time" content="" />
 
 
 
 
 
 
-  <meta property="og:image" content="http://192.168.1.210:1313/" />
+  <meta property="og:image" content="http://localhost:1313/" />
   <meta
     property="og:image:url"
-    content="http://192.168.1.210:1313/"
+    content="http://localhost:1313/"
   />
 
 
@@ -78,7 +91,7 @@
   <div class="container max-w-7xl mr-auto ml-auto">
     <nav class="flex items-center justify-between flex-wrap px-6 py-4">
       <div class="flex items-center flex-no-shrink text-white mr-6">
-        <a href="http://192.168.1.210:1313/"
+        <a href="/"
           >
             <span class="font-semibold text-xl tracking-tight"
               >Nottsu Blog</span
@@ -96,7 +109,7 @@
             <span id="icon-moon"
               ><span
       class="inline-flex align-middle pb-0.5 text-lg"
-      ><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M484-80q-84 0-157.5-32t-128-86.5Q144-253 112-326.5T80-484q0-146 93-257.5T410-880q-18 99 11 193.5T521-521q71 71 165.5 100T880-410q-26 144-138 237T484-80Z"/></svg></span
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M484-80q-84 0-157.5-32t-128-86.5Q144-253 112-326.5T80-484q0-146 93-257.5T410-880q-18 99 11 193.5T521-521q71 71 165.5 100T880-410q-26 144-138 237T484-80Z"/></svg></span
     ></span
 >
 </span
@@ -104,7 +117,7 @@
             <span id="icon-sun" class="hidden"
               ><span
       class="inline-flex align-middle pb-0.5 text-lg"
-      ><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm113-170q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Z"/></svg></span
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm113-170q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Z"/></svg></span
     ></span
 >
 </span
@@ -119,7 +132,7 @@
         >
           <span
       class="inline-flex align-middle pb-0.5 text-2xl"
-      ><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></span
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg></span
     ></span
 >
 
@@ -143,7 +156,7 @@
             <span id="icon2-moon"
               ><span
       class="inline-flex align-middle pb-0.5 text-lg"
-      ><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M484-80q-84 0-157.5-32t-128-86.5Q144-253 112-326.5T80-484q0-146 93-257.5T410-880q-18 99 11 193.5T521-521q71 71 165.5 100T880-410q-26 144-138 237T484-80Z"/></svg></span
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M484-80q-84 0-157.5-32t-128-86.5Q144-253 112-326.5T80-484q0-146 93-257.5T410-880q-18 99 11 193.5T521-521q71 71 165.5 100T880-410q-26 144-138 237T484-80Z"/></svg></span
     ></span
 >
 </span
@@ -151,7 +164,7 @@
             <span id="icon2-sun" class="hidden"
               ><span
       class="inline-flex align-middle pb-0.5 text-lg"
-      ><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm113-170q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Z"/></svg></span
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M440-760v-160h80v160h-80Zm266 110-55-55 112-115 56 57-113 113Zm54 210v-80h160v80H760ZM440-40v-160h80v160h-80ZM254-652 140-763l57-56 113 113-56 54Zm508 512L651-255l54-54 114 110-57 59ZM40-440v-80h160v80H40Zm157 300-56-57 112-112 29 27 29 28-114 114Zm113-170q-70-70-70-170t70-170q70-70 170-70t170 70q70 70 70 170t-70 170q-70 70-170 70t-170-70Z"/></svg></span
     ></span
 >
 </span
@@ -192,38 +205,99 @@
     
     
     
-    <a href="/post/hello-fun/">
       <div
-  class="bg-white w-full lg:max-w-full lg:flex mt-4 rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-warmgray-900"
+  class="bg-white w-full lg:max-w-full lg:flex lg:items-start mt-4 rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-warmgray-900"
 >
   
-  <div class="relative p-5 leading-normal max-w-full w-full">
-    <a href="http://192.168.1.210:1313/post/hello-fun/" class="group">
+  <div class="relative p-5 leading-normal max-w-full w-full flex flex-col self-start">
+    <a href="/post/hello-fun/" class="group block">
       <div
         class="text-gray-900 font-bold text-xl mb-2 dark:text-white leading-snug group-hover:text-sky-500 transition-colors duration-200"
       >
         はじめまして、未来大
       </div>
       
-      <p class="text-gray-600 text-sm leading-relaxed pb-8 dark:text-gray-400">
-        なぜこの大学に来たのか、何をしたいのかを自己整理する記事
+      <p class="summary-description text-gray-600 text-sm leading-relaxed dark:text-gray-400">
+        なぜこの大学に来たのか、何をしたいのかを自己整理する記事ああああああああああああああああああああああああああああああああああ
       </p>
       
     </a>
-    <time
-      class="text-xs text-gray-500 absolute items-center right-0 bottom-0 pb-4 pr-5 dark:text-gray-500 flex gap-1"
-    >
-      <span
+    <div class="mt-2 flex items-end justify-between gap-3">
+      
+        <div class="min-w-0 flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+          
+            <span class="inline-flex flex-wrap items-center gap-1.5">
+              <span
+      class="inline-flex align-middle pb-0.5 text-base text-gray-400 shrink-0"
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/></svg></span
+    ></span
+>
+
+              
+                <a href='/categories/%E9%9B%91%E8%A8%98/' class="bg-gray-800 text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
+                  雑記
+                </a>
+              
+            </span>
+          
+          
+            <span class="text-gray-300 dark:text-gray-600">|</span>
+          
+          
+            
+            
+            <span class="summary-tags-mobile max-w-full min-w-0 items-center gap-1.5 whitespace-nowrap overflow-hidden leading-none">
+              <span
+      class="inline-flex align-middle pb-0.5 shrink-0 text-sm"
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M856-390 570-104q-12 12-27 18t-30 6q-15 0-30-6t-27-18L103-457q-11-11-17-25.5T80-513v-287q0-33 23.5-56.5T160-880h287q16 0 31 6.5t26 17.5l352 353q12 12 17.5 27t5.5 30q0 15-5.5 29.5T856-390ZM260-640q25 0 42.5-17.5T320-700q0-25-17.5-42.5T260-760q-25 0-42.5 17.5T200-700q0 25 17.5 42.5T260-640Z"/></svg></span
+    ></span
+>
+
+              <a href='/tags/%E9%9B%91%E8%A8%98/' class="shrink-0 bg-gray-800 text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
+                雑記
+              </a>
+              
+                <span class="shrink-0 text-xs text-gray-500 dark:text-gray-400">+2</span>
+              
+            </span>
+            <span class="summary-tags-desktop max-w-full min-w-0 flex-wrap items-center gap-1.5 leading-none">
+              <span
+      class="inline-flex align-middle pb-0.5 shrink-0 text-sm"
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M856-390 570-104q-12 12-27 18t-30 6q-15 0-30-6t-27-18L103-457q-11-11-17-25.5T80-513v-287q0-33 23.5-56.5T160-880h287q16 0 31 6.5t26 17.5l352 353q12 12 17.5 27t5.5 30q0 15-5.5 29.5T856-390ZM260-640q25 0 42.5-17.5T320-700q0-25-17.5-42.5T260-760q-25 0-42.5 17.5T200-700q0 25 17.5 42.5T260-640Z"/></svg></span
+    ></span
+>
+
+              
+                <a href='/tags/%E9%9B%91%E8%A8%98/' class="shrink-0 bg-gray-800 text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
+                  雑記
+                </a>
+              
+                <a href='/tags/test1/' class="shrink-0 bg-gray-800 text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
+                  test1
+                </a>
+              
+                <a href='/tags/test2/' class="shrink-0 bg-gray-800 text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
+                  test2
+                </a>
+              
+            </span>
+          
+        </div>
+      
+      <time
+        class="text-xs text-gray-500 dark:text-gray-500 inline-flex items-center gap-1 whitespace-nowrap"
+      >
+        <span
       class="inline-flex align-middle pb-0.5 text-xs"
-      ><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg></span
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg></span
     ></span
 >
 2026/04/03
-    </time>
+      </time>
+    </div>
   </div>
 </div>
 
-    </a>
     
     
 
@@ -252,14 +326,23 @@
     </p>
   </div>
   <div class="p-4">
-    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-    <script src="/pagefind/pagefind-ui.js"></script>
-    <div id="search"></div>
-    <script>
-      window.addEventListener("DOMContentLoaded", (event) => {
-        new PagefindUI({ element: "#search", showSubResults: true });
-      });
-    </script>
+    <form action="/search/" method="get" role="search">
+      <label class="relative block">
+        <span class="sr-only">Search</span>
+        <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.5 14h-.79l-.28-.27a6.47 6.47 0 0 0 1.48-5.34C15.21 5.01 12.2 2 8.6 2S2 5.01 2 8.39s3.01 6.39 6.6 6.39c1.61 0 3.09-.59 4.22-1.57l.27.28v.79L20 21.49 21.49 20 15.5 14zM8.6 13c-2.53 0-4.6-2.07-4.6-4.61S6.07 3.78 8.6 3.78s4.6 2.07 4.6 4.61S11.13 13 8.6 13z"/>
+          </svg>
+        </span>
+        <input
+          class="w-full pl-9 pr-3 py-2.5 focus:outline-none rounded-xl border border-gray-200 dark:border-warmgray-700 text-sm bg-white dark:bg-warmgray-900 text-gray-900 dark:text-white dark:placeholder-gray-300 focus:border-gray-200 focus:ring-2 focus:ring-gray-200"
+          type="search"
+          name="q"
+          placeholder="記事を検索..."
+          aria-label="記事検索"
+        />
+      </label>
+    </form>
   </div>
 </div>
 
@@ -288,7 +371,7 @@
         name="archive"
         onChange="location.href=value;"
       >
-        <option>Select Archive...</option>
+        <option>アーカイブを選択...</option>
         
       </select>
     </div>
@@ -350,6 +433,26 @@
     </div>
     <div class="p-4">
           <a
+            href="/tags/test1"
+            class="inline-block mr-1.5 mb-1.5"
+          >
+            <span
+              class="bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium hover:bg-sky-50 hover:text-sky-700 transition-colors duration-150 dark:bg-warmgray-800 dark:text-gray-300 dark:hover:bg-warmgray-700"
+            >
+              test1
+            </span></a
+          >
+          <a
+            href="/tags/test2"
+            class="inline-block mr-1.5 mb-1.5"
+          >
+            <span
+              class="bg-gray-100 text-gray-700 rounded-full px-3 py-1 text-xs font-medium hover:bg-sky-50 hover:text-sky-700 transition-colors duration-150 dark:bg-warmgray-800 dark:text-gray-300 dark:hover:bg-warmgray-700"
+            >
+              test2
+            </span></a
+          >
+          <a
             href="/tags/%E9%9B%91%E8%A8%98"
             class="inline-block mr-1.5 mb-1.5"
           >
@@ -407,7 +510,7 @@
             class="flex items-center text-xs text-gray-500 dark:text-gray-500 gap-1"
             ><span
       class="inline-flex align-middle pb-0.5 text-xs"
-      ><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg></span
+      ><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg></span
     ></span
 >
 2026/04/03</time
@@ -459,7 +562,7 @@
     <p>
       &copy;
       2026
-      <a href="http://192.168.1.210:1313/" class="duration-200 hover:opacity-50"
+      <a href="/" class="duration-200 hover:opacity-50"
         >Nottsu Blog</a
       >
     </p>

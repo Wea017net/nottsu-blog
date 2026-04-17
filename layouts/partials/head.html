@@ -25,6 +25,20 @@
   />
   <link rel="shortcut icon" href="{{ "img/favicon/favicon.ico" | relURL }}" />
   <meta name="theme-color" content="#ffffff" />
+  <style>
+    .summary-description {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .summary-description {
+        -webkit-line-clamp: 1;
+      }
+    }
+  </style>
   <meta
     property="og:title"
     content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ site.Title }}{{ end }}"

@@ -5,13 +5,22 @@
     </p>
   </div>
   <div class="p-4">
-    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-    <script src="/pagefind/pagefind-ui.js"></script>
-    <div id="search"></div>
-    <script>
-      window.addEventListener("DOMContentLoaded", (event) => {
-        new PagefindUI({ element: "#search", showSubResults: true });
-      });
-    </script>
+    <form action="/search/" method="get" role="search">
+      <label class="relative block">
+        <span class="sr-only">Search</span>
+        <span class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15.5 14h-.79l-.28-.27a6.47 6.47 0 0 0 1.48-5.34C15.21 5.01 12.2 2 8.6 2S2 5.01 2 8.39s3.01 6.39 6.6 6.39c1.61 0 3.09-.59 4.22-1.57l.27.28v.79L20 21.49 21.49 20 15.5 14zM8.6 13c-2.53 0-4.6-2.07-4.6-4.61S6.07 3.78 8.6 3.78s4.6 2.07 4.6 4.61S11.13 13 8.6 13z"/>
+          </svg>
+        </span>
+        <input
+          class="w-full pl-9 pr-3 py-2.5 focus:outline-none rounded-xl border border-gray-200 dark:border-warmgray-700 text-sm bg-white dark:bg-warmgray-900 text-gray-900 dark:text-white dark:placeholder-gray-300 focus:border-gray-200 focus:ring-2 focus:ring-gray-200"
+          type="search"
+          name="q"
+          placeholder="記事を検索..."
+          aria-label="記事検索"
+        />
+      </label>
+    </form>
   </div>
 </div>

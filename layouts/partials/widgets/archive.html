@@ -13,7 +13,7 @@
       {{ range $name, $items := .Site.Taxonomies.archives }}
         <a
           class="flex items-center justify-between px-5 py-3 hover:bg-gray-50 dark:hover:bg-warmgray-800 transition-colors duration-150 text-sm text-gray-700 dark:text-gray-300"
-          href="{{ $.Site.BaseURL }}/archives/{{ $name | urlize | lower }}"
+          href="{{ printf "/archives/%s" ($name | urlize | lower) | relURL }}"
           ><span>{{ $name }}</span
           ><span class="text-xs text-gray-400 dark:text-gray-500"
             >{{ $items.Count }}</span
@@ -31,7 +31,7 @@
         <option>アーカイブを選択...</option>
         {{ range $name, $items := .Site.Taxonomies.archives }}
           <option
-            value="{{ $.Site.BaseURL }}/archives/{{ $name | urlize | lower }}"
+            value="{{ printf "/archives/%s" ($name | urlize | lower) | relURL }}"
           >
             {{ $name }} ({{ $items.Count }})
           </option>

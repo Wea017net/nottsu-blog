@@ -1,0 +1,62 @@
+{{ define "header_css" }}{{ end }}
+
+{{ define "main" }}
+<div class="grid grid-cols-3 gap-4">
+  {{ if .Site.Params.widgets.display }}
+    <main class="col-span-3 lg:col-span-2 mb-3">
+  {{ else }}
+    <main class="col-span-3 mb-3">
+  {{ end }}
+      <h2 class="text-3xl dark:text-white font-semibold mb-4">検索結果</h2>
+      <div class="bg-white rounded-xl shadow-sm p-4 dark:bg-warmgray-900">
+        <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+        <script src="/pagefind/pagefind-ui.js"></script>
+        <div id="search-page"></div>
+      </div>
+      <script>
+        window.addEventListener("DOMContentLoaded", function () {
+          var params = new URLSearchParams(window.location.search);
+          var initialQuery = (params.get("q") || "").trim();
+
+          new PagefindUI({ element: "#search-page", showSubResults: true });
+
+          if (!initialQuery) {
+            return;
+          }
+
+          function applyInitialQuery() {
+            var input = document.querySelector(
+              "#search-page input.pagefind-ui__search-input"
+            );
+
+            if (!input) {
+              return false;
+            }
+
+            input.value = initialQuery;
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            return true;
+          }
+
+          if (applyInitialQuery()) {
+            return;
+          }
+
+          var retries = 0;
+          var timer = window.setInterval(function () {
+            retries += 1;
+            if (applyInitialQuery() || retries >= 20) {
+              window.clearInterval(timer);
+            }
+          }, 100);
+        });
+      </script>
+    </main>
+
+  {{ if .Site.Params.widgets.display }}
+    <div class="col-span-3 lg:col-span-1 w-full lg:pt-9">
+      {{ partial "widgets.html" . }}
+    </div>
+  {{ end }}
+</div>
+{{ end }}

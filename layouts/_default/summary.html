@@ -1,5 +1,5 @@
 <div
-  class="bg-white w-full lg:max-w-full lg:flex mt-4 rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-warmgray-900"
+  class="bg-white w-full lg:max-w-full lg:flex lg:items-start mt-4 rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-warmgray-900"
 >
   {{ if .Site.Params.post.thumbnail }}
     {{ if .Params.image }}
@@ -20,23 +20,53 @@
       {{ end }}
     {{ end }}
   {{ end }}
-  <div class="relative p-5 leading-normal max-w-full w-full">
-    <a href="{{ .Permalink }}" class="group">
+  <div class="relative p-5 leading-normal max-w-full w-full flex flex-col self-start">
+    <a href="{{ .RelPermalink }}" class="group block">
       <div
         class="text-gray-900 font-bold text-xl mb-2 dark:text-white leading-snug group-hover:text-sky-500 transition-colors duration-200"
       >
         {{ .Title }}
       </div>
       {{ with .Description }}
-      <p class="text-gray-600 text-sm leading-relaxed pb-8 dark:text-gray-400">
+      <p class="summary-description text-gray-600 text-sm leading-relaxed dark:text-gray-400">
         {{ . }}
       </p>
       {{ end }}
     </a>
-    <time
-      class="text-xs text-gray-500 absolute items-center right-0 bottom-0 pb-4 pr-5 dark:text-gray-500 flex gap-1"
-    >
-      {{ partial "icon.html" (dict "name" "schedule" "class" "text-xs") }}{{ .Date.Format "2006/01/02" }}
-    </time>
+    <div class="mt-6 flex items-end justify-between gap-3">
+      {{ if or .Params.categories .Params.tags }}
+        <div class="min-w-0 flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
+          {{ with .Params.categories }}
+            <span class="inline-flex flex-wrap items-center gap-1.5">
+              {{ partial "icon.html" (dict "name" "folder" "class" "text-base text-gray-400 shrink-0") }}
+              {{ range $category := . }}
+                <a href='{{ ($.Site.GetPage (printf "/categories/%s" $category)).RelPermalink }}' class="{{ $.Site.Params.base_color | default "bg-gray-800" }} text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
+                  {{ $category }}
+                </a>
+              {{ end }}
+            </span>
+          {{ end }}
+          {{ if and .Params.categories .Params.tags }}
+            <span class="text-gray-300 dark:text-gray-600">|</span>
+          {{ end }}
+          {{ with .Params.tags }}
+            <span class="js-summary-tags flex max-w-full min-w-0 flex-wrap items-center gap-1.5">
+              {{ partial "icon.html" (dict "name" "sell" "class" "text-sm") }}
+              {{ range $tag := . }}
+                <a href='{{ ($.Site.GetPage (printf "/tags/%s" $tag)).RelPermalink }}' class="js-summary-tag-item {{ $.Site.Params.base_color | default "bg-gray-800" }} text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
+                  {{ $tag }}
+                </a>
+              {{ end }}
+              <span class="js-summary-tag-more hidden text-xs text-gray-500 dark:text-gray-400"></span>
+            </span>
+          {{ end }}
+        </div>
+      {{ end }}
+      <time
+        class="text-xs text-gray-500 dark:text-gray-500 inline-flex items-center gap-1 whitespace-nowrap"
+      >
+        {{ partial "icon.html" (dict "name" "schedule" "class" "text-xs") }}{{ .Date.Format "2006/01/02" }}
+      </time>
+    </div>
   </div>
 </div>

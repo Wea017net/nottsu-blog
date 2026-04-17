@@ -44,6 +44,37 @@
   --pagefind-ui-image-border-radius: 4px;
 }
 
+.summary-tags-mobile {
+  display: inline-flex;
+}
+
+.summary-tags-desktop {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .summary-tags-mobile {
+    display: none !important;
+  }
+
+  .summary-tags-desktop {
+    display: inline-flex !important;
+  }
+}
+
+.pagefind-ui__search-input {
+  border: 1px solid #e5e7eb !important;
+  box-shadow: none !important;
+}
+
+.dark .pagefind-ui__search-input {
+  border-color: #3f4446 !important;
+}
+
+.dark .pagefind-ui__search-input:focus {
+  border-color: #3f4446 !important;
+}
+
 .prose a {
   color: #00bcff;
 }

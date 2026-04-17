@@ -2,27 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://blog.nottsu.fun/categories/</loc>
     <lastmod>2026-04-03T01:28:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://blog.nottsu.fun/</loc>
     <lastmod>2026-04-03T01:28:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://blog.nottsu.fun/post/</loc>
     <lastmod>2026-04-03T01:28:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://blog.nottsu.fun/tags/</loc>
     <lastmod>2026-04-03T01:28:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/hello-fun/</loc>
+    <loc>https://blog.nottsu.fun/tags/test1/</loc>
     <lastmod>2026-04-03T01:28:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/%E9%9B%91%E8%A8%98/</loc>
+    <loc>https://blog.nottsu.fun/tags/test2/</loc>
     <lastmod>2026-04-03T01:28:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/%E9%9B%91%E8%A8%98/</loc>
+    <loc>https://blog.nottsu.fun/post/hello-fun/</loc>
     <lastmod>2026-04-03T01:28:00+09:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/archives/</loc>
+    <loc>https://blog.nottsu.fun/categories/%E9%9B%91%E8%A8%98/</loc>
+    <lastmod>2026-04-03T01:28:00+09:00</lastmod>
+  </url><url>
+    <loc>https://blog.nottsu.fun/tags/%E9%9B%91%E8%A8%98/</loc>
+    <lastmod>2026-04-03T01:28:00+09:00</lastmod>
+  </url><url>
+    <loc>https://blog.nottsu.fun/archives/</loc>
+  </url><url>
+    <loc>https://blog.nottsu.fun/search/</loc>
   </url>
 </urlset>

@@ -34,7 +34,7 @@
 
 
       {{ if .Params.image }}
-      <img class="my-2" src="{{ .Params.image | absURL }}">
+      <img class="my-2" src="{{ .Params.image | relURL }}">
       {{ end }}
       
       {{ if and (and (.Site.Params.ad.googleAdSense) (.Site.Params.ad.postTop)) (.Site.Params.ad.adslot) }}
@@ -72,7 +72,7 @@
       <div class="grid grid-cols-2 gap-3">
         <div class="col-span-1">
           {{ with .PrevInSection }}
-          <a class="previous" href="{{.Permalink}}">
+          <a class="previous" href="{{ .RelPermalink }}">
             <div class="flex items-center gap-2 p-3 rounded-lg border-2 border-gray-200 hover:border-sky-400 dark:border-warmgray-700 dark:hover:border-sky-500 transition-colors duration-200 text-sm font-medium text-gray-700 dark:text-gray-300">
               {{ partial "icon.html" "keyboard_arrow_left" }}<span class="truncate">{{.Title}}</span>
             </div>
@@ -81,7 +81,7 @@
         </div>
         <div class="col-span-1">
           {{ with .NextInSection }}
-          <a class="next" href="{{.Permalink}}">
+          <a class="next" href="{{ .RelPermalink }}">
             <div class="flex items-center justify-end gap-2 p-3 rounded-lg border-2 border-gray-200 hover:border-sky-400 dark:border-warmgray-700 dark:hover:border-sky-500 transition-colors duration-200 text-sm font-medium text-gray-700 dark:text-gray-300">
               <span class="truncate">{{.Title}}</span>{{ partial "icon.html" "keyboard_arrow_right" }}
             </div>
