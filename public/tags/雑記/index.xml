@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>雑記 on Nottsu Blog</title>
-    <link>https://blog.nottsu.fun/tags/%E9%9B%91%E8%A8%98/</link>
+    <link>http://localhost:1313/tags/%E9%9B%91%E8%A8%98/</link>
     <description>Recent content in 雑記 on Nottsu Blog</description>
     <generator>Hugo</generator>
     <language>ja-JP</language>
     <lastBuildDate>Fri, 17 Apr 2026 21:00:00 +0900</lastBuildDate>
-    <atom:link href="https://blog.nottsu.fun/tags/%E9%9B%91%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/%E9%9B%91%E8%A8%98/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>はじめまして、未来大</title>
-      <link>https://blog.nottsu.fun/post/hello-fun/</link>
+      <link>http://localhost:1313/post/hello-fun/</link>
       <pubDate>Fri, 17 Apr 2026 21:00:00 +0900</pubDate>
-      <guid>https://blog.nottsu.fun/post/hello-fun/</guid>
+      <guid>http://localhost:1313/post/hello-fun/</guid>
       <description>&lt;hr&gt;&#xA;&lt;p&gt;これは &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1Ptl-kfb4LW0Yjtadzg_K02FETkiydmozWghv4V-ZVs4/&#34;&gt;FUN 入学・卒業ブログリレー 2026&lt;/a&gt; の記事です。&lt;/p&gt;&#xA;&lt;p&gt;はじめまして、のっつです。&lt;br&gt;&#xA;2026年度入学の学部1年生です。&lt;br&gt;&#xA;この春より、公立はこだて未来大学に入学することができたので、改めてこの大学を選んだ理由やこれからやっていきたいことについて、ブログリレーという企画を通して発信していきたいと思います。&lt;/p&gt;</description>
     </item>
   </channel>
