@@ -1,7 +1,7 @@
 baseURL = 'https://blog.nottsu.fun/'
 locale = 'ja-JP'
 hasCJKLanguage = true
-title = 'Nottsu Blog'
+title = 'Nottsu blog'
 theme = 'Blonde'
 
 [params]

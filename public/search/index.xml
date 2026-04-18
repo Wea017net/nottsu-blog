@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>検索 on Nottsu Blog</title>
-    <link>https://blog.nottsu.fun/search/</link>
-    <description>Recent content in 検索 on Nottsu Blog</description>
+    <title>検索 on Nottsu blog</title>
+    <link>http://localhost:1313/search/</link>
+    <description>Recent content in 検索 on Nottsu blog</description>
     <generator>Hugo</generator>
     <language>ja-JP</language>
-    <atom:link href="https://blog.nottsu.fun/search/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/search/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
