@@ -1,0 +1,42 @@
+{{- $user := .Get "user" -}}
+{{- $id := .Get "id" -}}
+{{- $url := .Get "url" -}}
+
+{{- if and (not $url) $user $id -}}
+  {{- $url = printf "https://twitter.com/%s/status/%s" $user $id -}}
+{{- else if $url -}}
+  {{- $url = $url | replaceRE `^https://x\.com/` `https://twitter.com/` -}}
+{{- end -}}
+
+{{- if not $url -}}
+  {{- errorf "x shortcode requires either url or both user and id" -}}
+{{- end -}}
+
+<blockquote class="twitter-tweet" data-dnt="true">
+  <a href="{{ $url }}">{{ $url }}</a>
+</blockquote>
+<script>
+  (function () {
+    if (window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load();
+      return;
+    }
+
+    if (window.__xWidgetsScriptLoading) {
+      return;
+    }
+
+    window.__xWidgetsScriptLoading = true;
+
+    var script = document.createElement('script');
+    script.async = true;
+    script.charset = 'utf-8';
+    script.src = 'https://platform.twitter.com/widgets.js';
+    script.onload = function () {
+      if (window.twttr && window.twttr.widgets) {
+        window.twttr.widgets.load();
+      }
+    };
+    document.head.appendChild(script);
+  })();
+</script>

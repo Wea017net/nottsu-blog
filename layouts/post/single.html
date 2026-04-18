@@ -127,6 +127,81 @@
       const content = document.getElementById('toc-modal-content');
       const closeBtn = document.getElementById('toc-close');
 
+      const getHeaderOffset = () => {
+        const stickyHeader = document.querySelector('.sticky.top-0');
+        return (stickyHeader ? stickyHeader.getBoundingClientRect().height : 72) + 12;
+      };
+
+      const normalizeId = (href) => {
+        if (!href || href[0] !== '#') return '';
+        const raw = href.slice(1);
+        try {
+          return decodeURIComponent(raw);
+        } catch {
+          return raw;
+        }
+      };
+
+      const allTocLinks = Array.from(document.querySelectorAll('.toc-widget a[href^="#"]'));
+      const headingSelector = '.prose h2[id], .prose h3[id], .prose h4[id]';
+      const headings = Array.from(document.querySelectorAll(headingSelector));
+
+      const setActiveToc = (id) => {
+        allTocLinks.forEach((link) => {
+          const linkId = normalizeId(link.getAttribute('href'));
+          link.classList.toggle('is-active', !!id && linkId === id);
+        });
+      };
+
+      const animateScrollTo = (top, duration = 360) => {
+        const start = window.scrollY;
+        const distance = top - start;
+
+        if (Math.abs(distance) < 2) {
+          window.scrollTo(0, top);
+          return;
+        }
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          window.scrollTo(0, top);
+          return;
+        }
+
+        const startTime = performance.now();
+        const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+        const tick = (now) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutCubic(progress);
+          window.scrollTo(0, start + distance * eased);
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+      };
+
+      const scrollToHeading = (id) => {
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        const offsetTop = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+        animateScrollTo(offsetTop);
+        history.replaceState(null, '', `#${encodeURIComponent(id)}`);
+      };
+
+      const updateActiveByScroll = () => {
+        if (!headings.length) return;
+        const threshold = getHeaderOffset() + 8;
+        let current = headings[0].id;
+        headings.forEach((heading) => {
+          if (heading.getBoundingClientRect().top <= threshold) {
+            current = heading.id;
+          }
+        });
+        setActiveToc(current);
+      };
+
       const openModal = () => {
         modal.classList.remove('hidden');
         // 少し遅らせてアニメーションを開始
@@ -154,11 +229,36 @@
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
       if (overlay) overlay.addEventListener('click', closeModal);
 
-      // 目次のリンクをクリックしたら自動で閉じる
-      const tocLinks = content.querySelectorAll('a');
-      tocLinks.forEach(link => {
-        link.addEventListener('click', closeModal);
+      // 目次のリンクをクリックしたらヘッダー高さ分を考慮してジャンプ
+      allTocLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const id = normalizeId(link.getAttribute('href'));
+          if (!id) return;
+          event.preventDefault();
+          scrollToHeading(id);
+          closeModal();
+        });
       });
+
+      window.addEventListener('scroll', updateActiveByScroll, { passive: true });
+      window.addEventListener('resize', updateActiveByScroll);
+      updateActiveByScroll();
+
+      // Reload with hash can drift after external embeds resize the layout.
+      // Re-apply anchor offset after load and once more shortly after.
+      const initialHashId = normalizeId(window.location.hash);
+      if (initialHashId) {
+        const realignHashPosition = () => {
+          const target = document.getElementById(initialHashId);
+          if (!target) return;
+          const offsetTop = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
+          window.scrollTo(0, offsetTop);
+          setActiveToc(initialHashId);
+        };
+
+        requestAnimationFrame(realignHashPosition);
+        setTimeout(realignHashPosition, 450);
+      }
     });
   </script>
 

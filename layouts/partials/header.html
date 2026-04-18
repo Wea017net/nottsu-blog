@@ -36,22 +36,32 @@
           id="hamburgerbtn"
           class="flex items-center px-3 py-2 text-white/80 hover:text-white transition-colors duration-200"
           aria-label="Hamburger Button"
+          aria-expanded="false"
+          aria-controls="mobileDrawer"
         >
           {{ partial "icon.html" (dict "name" "menu" "class" "text-2xl") }}
         </button>
       </div>
       <div
         class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto overflow-y-auto max-h-screen"
-        id="mobileMenu"
       >
         <div class="text-sm lg:grow"></div>
         <div class="flex flex-col md:flex-row gap-2">
-          {{ range .Site.Menus.main }}
+          {{ if .Site.Menus.main }}
+            {{ range .Site.Menus.main }}
+              <a
+                href="{{ .URL }}"
+                class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white/80 hover:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
+              >
+                {{ .Name }}
+              </a>
+            {{ end }}
+          {{ else }}
             <a
-              href="{{ .URL }}"
+              href="{{ .Site.Home.RelPermalink }}"
               class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white/80 hover:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
             >
-              {{ .Name }}
+              ホーム
             </a>
           {{ end }}
         </div>
@@ -73,19 +83,93 @@
       </div>
     </nav>
   </div>
+  <div
+    id="mobileMenuOverlay"
+    class="hidden md:hidden fixed inset-0 bg-black/45 z-40"
+    aria-hidden="true"
+  ></div>
+  <aside
+    id="mobileDrawer"
+    class="md:hidden fixed top-0 right-0 h-full w-72 max-w-[86vw] bg-white dark:bg-warmgray-900 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out"
+    aria-hidden="true"
+  >
+    <div class="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
+      <span class="font-semibold text-gray-800 dark:text-gray-100">メニュー</span>
+      <button
+        id="mobileDrawerCloseBtn"
+        type="button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
+        aria-label="Close menu"
+      >
+        {{ partial "icon.html" (dict "name" "close" "class" "text-2xl") }}
+      </button>
+    </div>
+    <nav class="px-5 py-4">
+      <ul class="space-y-2">
+        {{ if .Site.Menus.main }}
+          {{ range .Site.Menus.main }}
+            <li>
+              <a
+                href="{{ .URL }}"
+                class="block rounded-lg px-3 py-3 font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+              >
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+        {{ else }}
+          <li>
+            <a
+              href="{{ .Site.Home.RelPermalink }}"
+              class="block rounded-lg px-3 py-3 font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800"
+            >
+              ホーム
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </aside>
 </div>
-<style>
-  .active {
-    display: block !important;
-  }
-</style>
-
 <script>
-  let hamburger = document.getElementById("hamburgerbtn");
+  (function () {
+    var hamburger = document.getElementById("hamburgerbtn");
+    var drawer = document.getElementById("mobileDrawer");
+    var overlay = document.getElementById("mobileMenuOverlay");
+    var closeBtn = document.getElementById("mobileDrawerCloseBtn");
 
-  let mobileMenu = document.getElementById("mobileMenu");
+    if (!hamburger || !drawer || !overlay || !closeBtn) return;
 
-  hamburger.addEventListener("click", function () {
-    mobileMenu.classList.toggle("active");
-  });
+    function openMenu() {
+      overlay.classList.remove("hidden");
+      drawer.classList.remove("translate-x-full");
+      drawer.setAttribute("aria-hidden", "false");
+      hamburger.setAttribute("aria-expanded", "true");
+      document.body.classList.add("overflow-hidden");
+    }
+
+    function closeMenu() {
+      drawer.classList.add("translate-x-full");
+      overlay.classList.add("hidden");
+      drawer.setAttribute("aria-hidden", "true");
+      hamburger.setAttribute("aria-expanded", "false");
+      document.body.classList.remove("overflow-hidden");
+    }
+
+    hamburger.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", closeMenu);
+    overlay.addEventListener("click", closeMenu);
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 768) {
+        closeMenu();
+      }
+    });
+  })();
 </script>

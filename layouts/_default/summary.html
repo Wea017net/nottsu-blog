@@ -1,22 +1,37 @@
 <div
-  class="bg-white w-full lg:max-w-full lg:flex lg:items-start mt-4 rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-warmgray-900"
+  class="bg-white w-full lg:max-w-full flex flex-col md:flex-row md:items-start mt-4 rounded-xl shadow-sm overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-warmgray-900"
 >
-  {{ if .Site.Params.post.thumbnail }}
-    {{ if .Params.image }}
-      <img
-        alt="thumbnail"
-        id="thumb"
-        class="{{ .Site.Params.post.thumbnail_width }} {{ .Site.Params.post.thumbnail_height }} object-cover"
-        src="{{ .Params.image | relURL }}"
-      />
-    {{ else }}
-      {{ if .Site.Params.post.noimage }}
+  {{ $thumb := .Params.thumbnail }}
+  {{ $showThumb := true }}
+  {{ $showNoImage := true }}
+  {{ $thumbWidth := "lg:w-auto" }}
+  {{ $thumbHeight := "lg:h-44" }}
+  {{ with .Site.Params.post }}
+    {{ if isset . "thumbnail" }}{{ $showThumb = .thumbnail }}{{ end }}
+    {{ if isset . "noimage" }}{{ $showNoImage = .noimage }}{{ end }}
+    {{ with .thumbnail_width }}{{ $thumbWidth = . }}{{ end }}
+    {{ with .thumbnail_height }}{{ $thumbHeight = . }}{{ end }}
+  {{ end }}
+  {{ if $showThumb }}
+    {{ if $thumb }}
+      <div class="summary-thumb-frame w-full md:w-44 shrink-0 overflow-hidden">
         <img
-          alt=""
+          alt="thumbnail"
           id="thumb"
-          class="{{ .Site.Params.post.thumbnail_width }} {{ .Site.Params.post.thumbnail_height }} object-cover"
-          src="{{ "/img/default.jpg" | relURL }}"
+          class="block w-full h-full object-cover"
+          src="{{ $thumb | relURL }}"
         />
+      </div>
+    {{ else }}
+      {{ if $showNoImage }}
+        <div class="summary-thumb-frame w-full md:w-44 shrink-0 overflow-hidden">
+          <img
+            alt=""
+            id="thumb"
+            class="block w-full h-full object-cover"
+            src="{{ "/img/default.jpg" | relURL }}"
+          />
+        </div>
       {{ end }}
     {{ end }}
   {{ end }}
@@ -50,8 +65,8 @@
             <span class="text-gray-300 dark:text-gray-600">|</span>
           {{ end }}
           {{ with .Params.tags }}
-            <span class="js-summary-tags flex max-w-full min-w-0 flex-wrap items-center gap-1.5">
-              {{ partial "icon.html" (dict "name" "sell" "class" "text-sm") }}
+            <span class="js-summary-tags inline-flex max-w-full min-w-0 flex-wrap items-center gap-1.5">
+              {{ partial "icon.html" (dict "name" "sell" "class" "text-base text-gray-400 shrink-0") }}
               {{ range $tag := . }}
                 <a href='{{ ($.Site.GetPage (printf "/tags/%s" $tag)).RelPermalink }}' class="js-summary-tag-item {{ $.Site.Params.base_color | default "bg-gray-800" }} text-white rounded-full px-3 py-0.5 font-medium hover:opacity-80 transition-opacity duration-150">
                   {{ $tag }}
