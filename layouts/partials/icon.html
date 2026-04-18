@@ -1,0 +1,26 @@
+{{- /*
+Usage:
+  {{ partial "icon.html" "menu" }}
+  {{ partial "icon.html" (dict "name" "schedule" "class" "mr-2") }}
+
+Parameters:
+  name (string) : filename without .svg under assets/icons/
+  class (string): extra CSS classes appended to wrapper span
+
+The SVG fill is replaced with currentColor so the icon inherits text color.
+Width/height attributes are normalized to 1em for font-size scaling.
+*/ -}}
+{{- $name := . -}}
+{{- $extra := "" -}}
+{{- if reflect.IsMap . -}}
+  {{- $name = index . "name" -}}
+  {{- $extra = index . "class" | default "" -}}
+{{- end -}}
+{{- $icon := resources.Get (printf "icons/%s.svg" $name) -}}
+{{- with $icon -}}
+  {{- $c := .Content -}}
+  {{- $c = $c | replaceRE `<svg` `<svg fill="currentColor"` -}}
+  {{- $c = $c | replaceRE ` (width|height)="[^"]*"` ` $1="1em"` -}}
+  {{- $c = $c | replaceRE `fill="[^"]*"` `fill="currentColor"` -}}
+  <span class="inline-flex align-middle pb-0.5 {{ with $extra }}{{ . }}{{ end }}">{{ $c | safeHTML }}</span>
+{{- end -}}
