@@ -53,8 +53,14 @@
 }
 
 .summary-thumb-frame {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   line-height: 0;
+}
+
+@media (min-width: 768px) {
+  .summary-thumb-frame {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .summary-thumb-frame > img {
@@ -77,6 +83,47 @@
 
 .dark .archive-select {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%239ca3af'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* タグの座布団色（ライト/ダークで個別調整） */
+.tag-pill {
+  background-color: #e8ebf0;
+  color: #273244;
+}
+
+.tag-pill:hover {
+  background-color: #dde3ea;
+  color: #1f2937;
+}
+
+.category-pill {
+  background-color: #e8ebf0;
+  color: #273244;
+}
+
+.category-pill:hover {
+  background-color: #dde3ea;
+  color: #1f2937;
+}
+
+.dark .tag-pill {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+.dark .tag-pill:hover {
+  background-color: #2a374a;
+  color: #ffffff;
+}
+
+.dark .category-pill {
+  background-color: #1f2937;
+  color: #ffffff;
+}
+
+.dark .category-pill:hover {
+  background-color: #2a374a;
+  color: #ffffff;
 }
 
 @media (min-width: 640px) {
@@ -122,16 +169,46 @@
   overflow-wrap: anywhere;
 }
 
-/* 目次トグルボタンのスタイル（位置と形状） */
-#toc-toggle {
+/* フローティングボタンの共通スタイル（サイズを厳密統一） */
+.floating-action-btn,
+#toc-toggle,
+#scroll-to-top {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
   z-index: 100;
   border-radius: 0.75rem;
   /* rounded-xl相当 */
   width: 3.5rem;
   height: 3.5rem;
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  padding: 0;
+  border: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+#toc-toggle {
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+#scroll-to-top {
+  bottom: 6rem;
+  right: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  #toc-toggle {
+    display: none !important;
+  }
+
+  #scroll-to-top {
+    bottom: 1.5rem;
+  }
 }
 
 /* 中見出し (h2) の下に線を引く */

@@ -269,7 +269,7 @@
           <div id="tags" class="inline-flex flex-wrap items-center gap-1.5">
             <span class="inline-flex align-middle pb-0.5 text-sm"><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M856-390 570-104q-12 12-27 18t-30 6q-15 0-30-6t-27-18L103-457q-11-11-17-25.5T80-513v-287q0-33 23.5-56.5T160-880h287q16 0 31 6.5t26 17.5l352 353q12 12 17.5 27t5.5 30q0 15-5.5 29.5T856-390ZM260-640q25 0 42.5-17.5T320-700q0-25-17.5-42.5T260-760q-25 0-42.5 17.5T200-700q0 25 17.5 42.5T260-640Z"/></svg></span>
             
-            <a href='/tags/%E9%9B%91%E8%A8%98/' class="bg-gray-800 text-white rounded-full px-3 py-0.5 text-xs font-medium hover:opacity-80 transition-opacity duration-150">雑記</a>
+            <a href='/tags/%E9%9B%91%E8%A8%98/' class="tag-pill rounded-full px-3 py-0.5 text-xs font-medium transition-colors duration-150">雑記</a>
             
           </div>
           
@@ -515,7 +515,7 @@ C#を使ったWindows向けアプリを開発してリリースしたり、disco
         <div id="categories" class="flex flex-wrap items-center gap-2">
           <span class="inline-flex align-middle pb-0.5 text-base text-gray-400"><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h240l80 80h320q33 0 56.5 23.5T880-640v400q0 33-23.5 56.5T800-160H160Z"/></svg></span>
           
-          <a href='/categories/%E9%9B%91%E8%A8%98/' class="bg-gray-800 text-white rounded-full px-3 py-1 text-sm font-medium hover:opacity-80 transition-opacity duration-150">雑記</a>
+          <a href='/categories/%E9%9B%91%E8%A8%98/' class="category-pill rounded-full px-3 py-1 text-sm font-medium transition-colors duration-150">雑記</a>
           
         </div>
         
@@ -526,7 +526,12 @@ C#を使ったWindows向けアプリを開発してリリースしたり、disco
     
   </main>
 
-  <button id="toc-toggle" class="lg:hidden bg-gray-800 text-white shadow-lg hover:opacity-80 transition-all duration-300 flex items-center justify-center" style="color: white !important;">
+  <button id="scroll-to-top" class="floating-action-btn fixed bottom-24 right-6 lg:bottom-6 bg-gray-800 text-white shadow-lg hover:opacity-80 transition-all duration-300 z-40 lg:bg-white lg:text-gray-700 lg:hover:bg-gray-50 lg:dark:bg-warmgray-900 lg:dark:text-gray-300 lg:dark:hover:bg-warmgray-800" title="ページトップへ">
+    <span class="inline-flex align-middle pb-0.5 text-2xl text-white lg:text-gray-700 lg:dark:text-gray-300"><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em"><path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+</span>
+  </button>
+
+  <button id="toc-toggle" class="floating-action-btn fixed bottom-6 right-6 lg:hidden bg-gray-800 text-white shadow-lg hover:opacity-80 transition-all duration-300 z-40" style="color: white !important;">
     <span class="inline-flex align-middle pb-0.5 text-2xl text-white fill-white"><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24" width="1em"><path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z"/></svg>
 </span>
   </button>
@@ -686,6 +691,17 @@ C#を使ったWindows向けアプリを開発してリリースしたり、disco
       window.addEventListener('scroll', updateActiveByScroll, { passive: true });
       window.addEventListener('resize', updateActiveByScroll);
       updateActiveByScroll();
+
+      
+      const scrollToTopBtn = document.getElementById('scroll-to-top');
+      if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
 
       
       
@@ -930,6 +946,7 @@ C#を使ったWindows向けアプリを開発してリリースしたり、disco
     
       
       <div class="bg-white rounded-xl shadow-sm mb-4 overflow-hidden dark:bg-warmgray-900">
+  
   <div class="px-5 py-4 border-b border-gray-100 dark:border-warmgray-700">
     <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
       About Me
@@ -939,6 +956,18 @@ C#を使ったWindows向けアプリを開発してリリースしたり、disco
     <img src="/img/icon.png" alt="のっつ" class="w-24 h-24 rounded-full mb-4 object-cover">
     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">のっつ</h3>
     <p class="text-sm text-gray-600 dark:text-gray-400">FUN B1<br>プログラミング初心者</p>
+    <a
+      href="https://x.com/Nottsu_fun26"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Xのプロフィールを開く"
+      class="mt-4 inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white border border-gray-200 text-gray-700 shadow-sm hover:shadow-md hover:bg-gray-50 hover:text-sky-700 active:translate-y-px active:shadow-none transition-all duration-150 dark:bg-warmgray-900 dark:border-warmgray-700 dark:text-gray-300 dark:hover:bg-warmgray-800"
+      title="X Account"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" fill="currentColor">
+        <path d="M18.244 2H21.5l-7.11 8.128L22.75 22h-6.548l-5.129-6.699L5.21 22H1.95l7.605-8.693L1.5 2h6.715l4.637 6.132L18.244 2zm-1.143 18h1.804L7.228 3.895H5.294L17.101 20z"/>
+      </svg>
+    </a>
   </div>
 </div>
     

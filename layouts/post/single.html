@@ -25,7 +25,7 @@
           <div id="tags" class="inline-flex flex-wrap items-center gap-1.5">
             {{ partial "icon.html" (dict "name" "sell" "class" "text-sm") }}
             {{ range . }}
-            <a href='{{ ($.Site.GetPage (printf "/tags/%s" .)).RelPermalink }}' class="{{ $.Site.Params.base_color | default "bg-gray-800" }} text-white rounded-full px-3 py-0.5 text-xs font-medium hover:opacity-80 transition-opacity duration-150">{{ . }}</a>
+            <a href='{{ ($.Site.GetPage (printf "/tags/%s" .)).RelPermalink }}' class="tag-pill rounded-full px-3 py-0.5 text-xs font-medium transition-colors duration-150">{{ . }}</a>
             {{ end }}
           </div>
           {{ end }}
@@ -60,7 +60,7 @@
         <div id="categories" class="flex flex-wrap items-center gap-2">
           {{ partial "icon.html" (dict "name" "folder" "class" "text-base text-gray-400") }}
           {{ range . }}
-          <a href='{{ ($.Site.GetPage (printf "/categories/%s" .)).RelPermalink }}' class="{{ $.Site.Params.base_color | default "bg-gray-800" }} text-white rounded-full px-3 py-1 text-sm font-medium hover:opacity-80 transition-opacity duration-150">{{ . }}</a>
+          <a href='{{ ($.Site.GetPage (printf "/categories/%s" .)).RelPermalink }}' class="category-pill rounded-full px-3 py-1 text-sm font-medium transition-colors duration-150">{{ . }}</a>
           {{ end }}
         </div>
         {{ end }}
@@ -94,7 +94,11 @@
     {{ partial "comments.html" . }}
   </main>
 
-  <button id="toc-toggle" class="lg:hidden {{ .Site.Params.base_color | default "bg-gray-800" }} text-white shadow-lg hover:opacity-80 transition-all duration-300 flex items-center justify-center" style="color: white !important;">
+  <button id="scroll-to-top" class="floating-action-btn fixed bottom-24 right-6 lg:bottom-6 {{ .Site.Params.base_color | default "bg-gray-800" }} text-white shadow-lg hover:opacity-80 transition-all duration-300 z-40 lg:bg-white lg:text-gray-700 lg:hover:bg-gray-50 lg:dark:bg-warmgray-900 lg:dark:text-gray-300 lg:dark:hover:bg-warmgray-800" title="ページトップへ">
+    {{ partial "icon.html" (dict "name" "arrow_upward" "class" "text-2xl text-white lg:text-gray-700 lg:dark:text-gray-300") }}
+  </button>
+
+  <button id="toc-toggle" class="floating-action-btn fixed bottom-6 right-6 lg:hidden {{ .Site.Params.base_color | default "bg-gray-800" }} text-white shadow-lg hover:opacity-80 transition-all duration-300 z-40" style="color: white !important;">
     {{ partial "icon.html" (dict "name" "list" "class" "text-2xl text-white fill-white") }}
   </button>
 
@@ -243,6 +247,17 @@
       window.addEventListener('scroll', updateActiveByScroll, { passive: true });
       window.addEventListener('resize', updateActiveByScroll);
       updateActiveByScroll();
+
+      // スクロールトップボタンの動作
+      const scrollToTopBtn = document.getElementById('scroll-to-top');
+      if (scrollToTopBtn) {
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
 
       // Reload with hash can drift after external embeds resize the layout.
       // Re-apply anchor offset after load and once more shortly after.
