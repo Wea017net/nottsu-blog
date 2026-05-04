@@ -53,28 +53,11 @@
       {{ else }}
         {{ with . | fingerprint }}
           <link
-            rel="preload"
-            as="style"
-            href="{{ .RelPermalink }}"
-            integrity="{{ .Data.Integrity }}"
-            crossorigin="anonymous"
-          />
-          <link
             rel="stylesheet"
             href="{{ .RelPermalink }}"
             integrity="{{ .Data.Integrity }}"
             crossorigin="anonymous"
-            media="print"
-            onload="this.media='all'"
           />
-          <noscript>
-            <link
-              rel="stylesheet"
-              href="{{ .RelPermalink }}"
-              integrity="{{ .Data.Integrity }}"
-              crossorigin="anonymous"
-            />
-          </noscript>
         {{ end }}
       {{ end }}
     {{ end }}
