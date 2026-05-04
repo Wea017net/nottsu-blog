@@ -12,6 +12,8 @@
     {{ with .thumbnail_width }}{{ $thumbWidth = . }}{{ end }}
     {{ with .thumbnail_height }}{{ $thumbHeight = . }}{{ end }}
   {{ end }}
+  {{ $isFirstSummary := false }}
+  {{ with .Scratch.Get "isFirstSummary" }}{{ $isFirstSummary = . }}{{ end }}
   {{ if $showThumb }}
     {{ if $thumb }}
       <div class="summary-thumb-frame w-full md:w-44 shrink-0 overflow-hidden aspect-video md:aspect-auto">
@@ -20,6 +22,8 @@
           id="thumb"
           class="block w-full h-full object-cover"
           src="{{ $thumb | relURL }}"
+          decoding="async"
+          {{ if $isFirstSummary }}fetchpriority="high" loading="eager"{{ else }}loading="lazy"{{ end }}
         />
       </div>
     {{ else }}
@@ -30,6 +34,8 @@
             id="thumb"
             class="block w-full h-full object-cover"
             src="{{ "/img/default.jpg" | relURL }}"
+            decoding="async"
+            {{ if $isFirstSummary }}fetchpriority="high" loading="eager"{{ else }}loading="lazy"{{ end }}
           />
         </div>
       {{ end }}

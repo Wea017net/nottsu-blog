@@ -24,8 +24,9 @@
     {{.Scratch.Set "Paginator" .Paginator}}
     {{end}}
     {{$paginator:=(.Scratch.Get "Paginator")}}
-    {{ range $paginator.Pages }}
-      {{ .Render "summary" }}
+    {{ range $index, $page := $paginator.Pages }}
+      {{ $page.Scratch.Set "isFirstSummary" (eq $index 0) }}
+      {{ $page.Render "summary" }}
     {{ end }}
     {{ partial "paginator.html" . }}
   </main>

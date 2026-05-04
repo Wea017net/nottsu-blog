@@ -34,7 +34,13 @@
 
 
       {{ if .Params.image }}
-      <img class="my-2" src="{{ .Params.image | relURL }}">
+      <img
+        class="my-2"
+        src="{{ .Params.image | relURL }}"
+        decoding="async"
+        fetchpriority="high"
+        loading="eager"
+      >
       {{ end }}
       
       {{ if and (and (.Site.Params.ad.googleAdSense) (.Site.Params.ad.postTop)) (.Site.Params.ad.adslot) }}

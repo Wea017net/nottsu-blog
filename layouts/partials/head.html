@@ -30,12 +30,14 @@
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
       overflow: hidden;
     }
 
     @media (min-width: 640px) {
       .summary-description {
         -webkit-line-clamp: 1;
+        line-clamp: 1;
       }
     }
   </style>
@@ -51,11 +53,28 @@
       {{ else }}
         {{ with . | fingerprint }}
           <link
-            rel="stylesheet"
+            rel="preload"
+            as="style"
             href="{{ .RelPermalink }}"
             integrity="{{ .Data.Integrity }}"
             crossorigin="anonymous"
           />
+          <link
+            rel="stylesheet"
+            href="{{ .RelPermalink }}"
+            integrity="{{ .Data.Integrity }}"
+            crossorigin="anonymous"
+            media="print"
+            onload="this.media='all'"
+          />
+          <noscript>
+            <link
+              rel="stylesheet"
+              href="{{ .RelPermalink }}"
+              integrity="{{ .Data.Integrity }}"
+              crossorigin="anonymous"
+            />
+          </noscript>
         {{ end }}
       {{ end }}
     {{ end }}
