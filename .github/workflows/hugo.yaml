@@ -26,13 +26,18 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Install Tailwind CSS (Linux)
-        run: |
-          curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
-          chmod +x tailwindcss-linux-x64
-          sudo mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build with Hugo
+        env:
+          HUGO_TAILWINDCSS_BINARY: ./node_modules/.bin/tailwindcss
         run: |
           hugo
           hugo --minify
