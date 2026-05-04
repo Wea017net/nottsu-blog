@@ -2680,14 +2680,14 @@
 @font-face {
   font-family: 'LINE Seed JP';
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   font-weight: 400;
   src: url('/font-files/files/line-seed-jp-japanese-400-normal.woff2') format('woff2');
 }
 @font-face {
   font-family: 'LINE Seed JP';
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
   font-weight: 700;
   src: url('/font-files/files/line-seed-jp-japanese-700-normal.woff2') format('woff2');
 }
