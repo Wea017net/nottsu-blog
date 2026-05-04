@@ -82,3 +82,7 @@ archive = "archives"
   disableWatch = true
   source = 'hugo_stats.json'
   target = 'assets/notwatching/hugo_stats.json'
+
+[services]
+  [services.googleAnalytics]
+    id = "G-63PZV2M8ZR"
