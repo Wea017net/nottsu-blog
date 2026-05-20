@@ -29,6 +29,11 @@
     html {
       background-color: #f3f4f6;
       color: #111827;
+      visibility: hidden;
+    }
+
+    html.css-loaded {
+      visibility: visible;
     }
 
     html.dark,
@@ -66,6 +71,13 @@
       }
     }
   </style>
+  <noscript>
+    <style>
+      html {
+        visibility: visible;
+      }
+    </style>
+  </noscript>
   <meta
     property="og:title"
     content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ site.Title }}{{ end }}"
@@ -74,7 +86,11 @@
     {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
     {{ with . | css.TailwindCSS $opts }}
       {{ if hugo.IsDevelopment }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" />
+        <link
+          rel="stylesheet"
+          href="{{ .RelPermalink }}"
+          onload="document.documentElement.classList.add('css-loaded')"
+        />
       {{ else }}
         {{ with . | fingerprint }}
           <link
@@ -90,7 +106,7 @@
             integrity="{{ .Data.Integrity }}"
             crossorigin="anonymous"
             media="print"
-            onload="this.media='all'"
+            onload="this.media='all';document.documentElement.classList.add('css-loaded')"
           />
           <noscript>
             <link

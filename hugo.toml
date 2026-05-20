@@ -6,7 +6,7 @@ theme = 'Blonde'
 
 [params]
 base_color = "bg-gray-800"
-description = "Blonde theme for Hugo."
+description = "のっつの雑記・開発・学びをまとめる個人ブログ"
 paginator_pages = 5
 archive_dropdown = "true"
 tagsLimit = 20
