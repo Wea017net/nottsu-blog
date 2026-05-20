@@ -1,4 +1,4 @@
-<div class="{{ .Site.Params.base_color }} shadow-sm sticky top-0 z-100">
+<div class="{{ .Site.Params.base_color }} text-white shadow-sm sticky top-0 z-100">
   <div class="container max-w-7xl mr-auto ml-auto">
     <nav class="flex items-center justify-between flex-wrap px-6 py-4">
       <div class="flex items-center flex-no-shrink text-white mr-6">
@@ -20,7 +20,7 @@
         <div class="py-2">
           <button
             onclick="toggleDarkMode()"
-            class="focus-visible:outline-none mr-1 text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
+            class="darkmode-toggle focus-visible:outline-none mr-1 text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
             aria-label="Darkmode Toggle Button"
           >
             <span id="icon-moon"
@@ -51,7 +51,7 @@
             {{ range .Site.Menus.main }}
               <a
                 href="{{ .URL }}"
-                class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white/80 hover:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
+                class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white hover:text-white visited:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
               >
                 {{ .Name }}
               </a>
@@ -59,7 +59,7 @@
           {{ else }}
             <a
               href="{{ .Site.Home.RelPermalink }}"
-              class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white/80 hover:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
+              class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white hover:text-white visited:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
             >
               ホーム
             </a>
@@ -69,7 +69,7 @@
           <span>|</span>
           <button
             onclick="toggleDarkMode()"
-            class="focus-visible:outline-none hover:opacity-50 duration-200 ml-2 cursor-pointer"
+            class="darkmode-toggle focus-visible:outline-none hover:opacity-50 duration-200 ml-2 cursor-pointer"
             aria-label="Darkmode Toggle Button"
           >
             <span id="icon2-moon"
@@ -91,6 +91,7 @@
   <aside
     id="mobileDrawer"
     class="md:hidden fixed top-0 right-0 h-full w-72 max-w-[86vw] bg-white dark:bg-warmgray-900 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out"
+    style="transform: translateX(100%);"
     aria-hidden="true"
   >
     <div class="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
@@ -141,6 +142,7 @@
     if (!hamburger || !drawer || !overlay || !closeBtn) return;
 
     function openMenu() {
+      drawer.style.transform = "";
       overlay.classList.remove("hidden");
       drawer.classList.remove("translate-x-full");
       drawer.setAttribute("aria-hidden", "false");

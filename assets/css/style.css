@@ -158,6 +158,14 @@
   opacity: 0.8;
 }
 
+.toc-widget a:focus,
+.toc-widget a:focus-visible,
+.darkmode-toggle:focus,
+.darkmode-toggle:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
 /* 本文の最初の子要素の上の余白を詰める */
 .prose> :first-child {
   margin-top: 0 !important;

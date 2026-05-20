@@ -29,6 +29,11 @@
     html {
       background-color: #f3f4f6;
       color: #111827;
+      visibility: hidden;
+    }
+
+    html.css-loaded {
+      visibility: visible;
     }
 
     html.dark,
@@ -66,6 +71,13 @@
       }
     }
   </style>
+  <noscript>
+    <style>
+      html {
+        visibility: visible;
+      }
+    </style>
+  </noscript>
   <meta
     property="og:title"
     content="404 Page not found"
@@ -74,7 +86,11 @@
     
     
       
-        <link rel="stylesheet" href="/css/style.css" />
+        <link
+          rel="stylesheet"
+          href="/css/style.css"
+          onload="document.documentElement.classList.add('css-loaded')"
+        />
       
     
   
@@ -83,9 +99,9 @@
 
   
 
-<meta name="description" content="Blonde theme for Hugo." />
+<meta name="description" content="のっつの雑記・開発・学びをまとめる個人ブログ" />
 <meta property="og:site_name" content="Nottsu blog" />
-<meta property="og:description" content="Blonde theme for Hugo." />
+<meta property="og:description" content="のっつの雑記・開発・学びをまとめる個人ブログ" />
 <meta property="og:url" content="http://localhost:1313/404.html" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
@@ -94,7 +110,7 @@
 
   <link rel="canonical" href="http://localhost:1313/404.html" />
 
-<meta name="twitter:description" content="Blonde theme for Hugo." />
+<meta name="twitter:description" content="のっつの雑記・開発・学びをまとめる個人ブログ" />
 <meta property="article:published_time" content="" />
 
 
@@ -117,7 +133,7 @@
   <i class="dark hidden"></i>
 </head>
 <body class="font-sans">
-    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800 shadow-sm sticky top-0 z-100">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800 text-white shadow-sm sticky top-0 z-100">
   <div class="container max-w-7xl mr-auto ml-auto">
     <nav class="flex items-center justify-between flex-wrap px-6 py-4">
       <div class="flex items-center flex-no-shrink text-white mr-6">
@@ -133,7 +149,7 @@
         <div class="py-2">
           <button
             onclick="toggleDarkMode()"
-            class="focus-visible:outline-none mr-1 text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
+            class="darkmode-toggle focus-visible:outline-none mr-1 text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
             aria-label="Darkmode Toggle Button"
           >
             <span id="icon-moon"
@@ -163,7 +179,7 @@
           
             <a
               href="/"
-              class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white/80 hover:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
+              class="no-underline font-medium text-sm block sm:inline-block sm:mt-0 text-white hover:text-white visited:text-white mr-4 py-2 sm:py-0 transition-colors duration-200"
             >
               ホーム
             </a>
@@ -173,7 +189,7 @@
           <span>|</span>
           <button
             onclick="toggleDarkMode()"
-            class="focus-visible:outline-none hover:opacity-50 duration-200 ml-2 cursor-pointer"
+            class="darkmode-toggle focus-visible:outline-none hover:opacity-50 duration-200 ml-2 cursor-pointer"
             aria-label="Darkmode Toggle Button"
           >
             <span id="icon2-moon"
@@ -195,6 +211,7 @@
   <aside
     id="mobileDrawer"
     class="md:hidden fixed top-0 right-0 h-full w-72 max-w-[86vw] bg-white dark:bg-warmgray-900 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-out"
+    style="transform: translateX(100%);"
     aria-hidden="true"
   >
     <div class="flex items-center justify-between px-5 py-4 border-b border-gray-200 dark:border-gray-700">
@@ -235,6 +252,7 @@
     if (!hamburger || !drawer || !overlay || !closeBtn) return;
 
     function openMenu() {
+      drawer.style.transform = "";
       overlay.classList.remove("hidden");
       drawer.classList.remove("translate-x-full");
       drawer.setAttribute("aria-hidden", "false");

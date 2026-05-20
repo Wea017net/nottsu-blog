@@ -1453,17 +1453,8 @@
   .pr-3 {
     padding-right: calc(var(--spacing) * 3);
   }
-  .pr-5 {
-    padding-right: calc(var(--spacing) * 5);
-  }
   .pb-0\.5 {
     padding-bottom: calc(var(--spacing) * 0.5);
-  }
-  .pb-4 {
-    padding-bottom: calc(var(--spacing) * 4);
-  }
-  .pb-6 {
-    padding-bottom: calc(var(--spacing) * 6);
   }
   .pl-9 {
     padding-left: calc(var(--spacing) * 9);
@@ -1512,6 +1503,10 @@
   .text-xs {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .leading-none {
+    --tw-leading: 1;
+    line-height: 1;
   }
   .leading-normal {
     --tw-leading: var(--leading-normal);
@@ -1695,12 +1690,9 @@
       }
     }
   }
-  .hover\:-translate-y-0\.5 {
-    &:hover {
-      @media (hover: hover) {
-        --tw-translate-y: calc(var(--spacing) * -0.5);
-        translate: var(--tw-translate-x) var(--tw-translate-y);
-      }
+  .visited\:text-white {
+    &:visited {
+      color: var(--color-white);
     }
   }
   .hover\:-translate-y-1 {
@@ -2446,6 +2438,11 @@
       flex-grow: 1;
     }
   }
+  .lg\:items-start {
+    @media (width >= 64rem) {
+      align-items: flex-start;
+    }
+  }
   .lg\:bg-white {
     @media (width >= 64rem) {
       background-color: var(--color-white);
@@ -2794,6 +2791,10 @@
 .prose a:hover {
   text-decoration: underline;
   opacity: 0.8;
+}
+.toc-widget a:focus, .toc-widget a:focus-visible, .darkmode-toggle:focus, .darkmode-toggle:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 .prose> :first-child {
   margin-top: 0 !important;
