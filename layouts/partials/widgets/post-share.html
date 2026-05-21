@@ -1,0 +1,53 @@
+{{- if .IsPage -}}
+{{- $permalink := .Permalink -}}
+{{- $title := .Title -}}
+{{- $shareTitle := printf "%s - %s" .Title .Site.Title -}}
+{{- $shareText := printf "%s\n%s" $shareTitle $permalink -}}
+<div
+  class="bg-white dark:bg-warmgray-900 rounded-xl shadow-sm p-5 my-4"
+  data-post-share
+  data-share-url="{{ $permalink | htmlEscape }}"
+  data-share-title="{{ $shareTitle | htmlEscape }}"
+  data-share-text="{{ $shareText | htmlEscape }}"
+>
+  <div class="mb-3">
+    <p class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">
+      Share this post
+    </p>
+    <p class="mt-1 text-sm text-gray-600 dark:text-gray-300">
+      <!--文章を追加する場合はここ-->
+    </p>
+  </div>
+  <div class="flex flex-wrap gap-2">
+    <a
+      href="https://twitter.com/intent/tweet?text={{ $title | urlquery }}%0a&url={{ $permalink | urlquery }}"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Xでシェア"
+      class="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium text-white bg-gray-900 hover:bg-gray-700 transition-colors duration-200"
+    >
+      {{ partial "icon.html" (dict "name" "twitter-x" "class" "text-base !text-white") }}
+      <span class="!text-white">Xでシェア</span>
+    </a>
+    <button
+      type="button"
+      id="post-share-copy-btn"
+      aria-label="リンクをコピー"
+      class="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium border-0 cursor-pointer transition-colors duration-150 bg-[#e8ebf0] text-[#273244] hover:bg-[#dde3ea] hover:text-[#1f2937] dark:bg-[#1f2937] dark:text-white dark:hover:bg-[#2a374a] dark:hover:text-white"
+    >
+      {{ partial "icon.html" (dict "name" "link" "class" "text-base") }}
+      <span id="post-share-copy-label">リンクをコピー</span>
+    </button>
+    <button
+      type="button"
+      id="post-share-more-btn"
+      aria-label="その他の共有方法を開く"
+      class="inline-flex items-center gap-2 rounded-lg px-4 py-2.5 text-sm font-medium border-0 cursor-pointer transition-colors duration-150 bg-[#e8ebf0] text-[#273244] hover:bg-[#dde3ea] hover:text-[#1f2937] dark:bg-[#1f2937] dark:text-white dark:hover:bg-[#2a374a] dark:hover:text-white"
+    >
+      {{ partial "icon.html" (dict "name" "share" "class" "text-base") }}
+      <span>共有...</span>
+    </button>
+  </div>
+</div>
+<script src="/js/post-share.js" defer></script>
+{{- end -}}

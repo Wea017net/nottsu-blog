@@ -72,7 +72,6 @@
         {{ end }}
       </aside>
     </article>
-    {{ partial "share.html" . }}
     {{ if or .PrevInSection .NextInSection }}
     <div class="bg-white dark:bg-warmgray-900 rounded-xl shadow-sm p-4 my-4">
       <div class="grid grid-cols-2 gap-3">
@@ -98,6 +97,7 @@
     </div>
     {{ end }}
     {{ partial "comments.html" . }}
+    {{ partial "widgets/post-share.html" . }}
   </main>
 
   <button id="scroll-to-top" class="floating-action-btn fixed bottom-24 right-6 lg:bottom-6 {{ .Site.Params.base_color | default "bg-gray-800" }} text-white shadow-lg hover:opacity-80 transition-all duration-300 z-40 lg:bg-white lg:text-gray-700 lg:hover:bg-gray-50 lg:dark:bg-warmgray-900 lg:dark:text-gray-300 lg:dark:hover:bg-warmgray-800" title="ページトップへ">
