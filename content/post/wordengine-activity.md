@@ -11,7 +11,7 @@ seo:
   description: "PreMiDの導入方法、アクティビティの追加方法を解説"
   canonical: "https://blog.nottsu.fun/post/wordengine-activity/"
   noindex: false
-  image: "/img/posts/wordengine-activity/og_wordengine.webp"
+  image: "/img/posts/wordengine-activity/thumbnail_wordengine.webp"
   thumbnail: "/img/posts/wordengine-activity/thumbnail_wordengine.webp"
 ---
 ---
