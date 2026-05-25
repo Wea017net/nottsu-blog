@@ -1,0 +1,21 @@
+{{ $url := default (.Get "src") (.Get "url") }}
+{{ if not $url }}
+<!-- qiita shortcode: pass url e.g. use in content: qiita url="https://qiita.com/xxx/items/yyy" -->
+<div class="qiita-embed-missing">Qiita埋め込み: URLを指定してください。</div>
+{{ else }}
+  {{ $id := replaceRE "^.*/items/([0-9a-zA-Z]+).*$" "$1" $url }}
+  {{ $data := index .Site.Data.qiita $id }}
+  {{ if $data }}
+    {{ $title := $data.title }}
+    {{ $user := $data.user }}
+    {{ $avatar := $user.profile_image_url | default "" }}
+    {{ $rendered := $data.rendered_body | default "" }}
+    {{ $excerpt := plainify $rendered | truncate 200 }}
+    {{ partial "shortcodes/qiita-card.html" (dict "url" $url "title" $title "excerpt" $excerpt "avatar" $avatar) }}
+  {{ else }}
+    {{ $titleParam := .Get "title" }}
+    {{ $excerptParam := .Get "excerpt" }}
+    {{ $avatarParam := .Get "avatar" }}
+    {{ partial "shortcodes/qiita-card.html" (dict "url" $url "title" $titleParam "excerpt" $excerptParam "avatar" $avatarParam) }}
+  {{ end }}
+{{ end }}

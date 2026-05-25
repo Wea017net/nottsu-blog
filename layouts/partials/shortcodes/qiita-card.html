@@ -1,0 +1,19 @@
+{{ $url := .url }}
+{{ $title := .title | default $url }}
+{{ $excerpt := .excerpt }}
+{{ $avatar := .avatar }}
+<div class="qiita-embed-card">
+  <a class="qiita-card-link" href="{{ $url }}" target="_blank" rel="noopener noreferrer">
+    <div class="qiita-card-frame">
+      {{ if $avatar }}<img class="qiita-avatar" src="{{ $avatar }}" alt="author">{{ end }}
+      <div class="qiita-card-body">
+        <div class="title">{{ $title }}</div>
+        {{ if $excerpt }}<div class="excerpt">{{ $excerpt }}</div>{{ end }}
+      </div>
+    </div>
+    <div class="qiita-card-meta">
+      <span class="qiita-badge">Qiita</span>
+      <span class="qiita-open">記事を開く</span>
+    </div>
+  </a>
+</div>

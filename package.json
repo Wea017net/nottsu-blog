@@ -9,6 +9,7 @@
   "scripts": {
     "build": "hugo && npx pagefind --site public",
     "dev": "hugo server",
+    "fetch-qiita": "node ./scripts/fetch_qiita.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

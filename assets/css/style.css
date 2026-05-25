@@ -357,3 +357,6 @@
   --alert-title: #fca5a5;
   --alert-text: #fecaca;
 }
+
+/* カスタム追加スタイルを読み込む */
+@import "custom.css";

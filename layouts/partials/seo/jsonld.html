@@ -1,0 +1,38 @@
+{{- $page := .page -}}
+{{- $seo := .seo -}}
+{{- $isArticle := or (in (slice "post" "blog" "article") $page.Type) (and $page.IsPage (not $page.IsHome)) -}}
+{{- if $isArticle -}}
+  {{- $image := "" -}}
+  {{ with index $page.Params "embed-image" }}{{ $image = . }}{{ else }}{{ with $page.Params.thumbnail }}{{ $image = . }}{{ else }}{{ with $page.Params.image }}{{ $image = . }}{{ else }}{{ $image = $.Site.Params.og_image }}{{ end }}{{ end }}{{ end }}
+  {{- $authorName := $.Site.Params.author -}}
+  {{- with $page.Params.author }}{{ $authorName = . }}{{ end }}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ $page.Permalink }}"
+    },
+    "headline": "{{ $page.Title }}",
+    "description": "{{ $seo.description | htmlEscape }}",
+    {{- if $image }}
+    "image": ["{{ $image | absURL }}"],
+    {{- end }}
+    "author": {
+      "@type": "Person",
+      "name": "{{ $authorName }}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{ $seo.site_name }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ $.Site.Params.logo | absURL }}"
+      }
+    },
+    "datePublished": "{{- $page.Date.Format "2006-01-02T15:04:05Z07:00" -}}",
+    "dateModified": "{{- $page.Lastmod.Format "2006-01-02T15:04:05Z07:00" -}}"
+  }
+  </script>
+{{- end -}}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>開発 on Nottsu blog</title>
+    <link>http://localhost:1313/categories/%E9%96%8B%E7%99%BA/</link>
+    <description>Recent content in 開発 on Nottsu blog</description>
+    <generator>Hugo</generator>
+    <language>ja-JP</language>
+    <lastBuildDate>Tue, 26 May 2026 01:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/%E9%96%8B%E7%99%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DiscordにWordEngineの取り組み状況を表示するPreMiD Activityを作ったので紹介</title>
+      <link>http://localhost:1313/post/wordengine-activity/</link>
+      <pubDate>Tue, 26 May 2026 01:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/post/wordengine-activity/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;p&gt;&lt;figure style=&#34;text-align: center; margin: 1.5rem 0;&#34;&gt;&#xD;&#xA;  &lt;img src=&#34;http://localhost:1313/img/posts/wordengine-activity/thumbnail_wordengine.webp&#34; alt=&#34;&#34;  style=&#34;max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);&#34;&gt;&#xD;&#xA;  &#xD;&#xA;&lt;/figure&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[!NOTE]&#xA;導入方法だけ読みたい方は&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&lt;a href=&#34;http://localhost:1313/post/wordengine-activity/#導入手順&#34;&gt;導入手順&lt;/a&gt;&#xD;&#xA;まで飛ばしてください。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;Discordには&lt;strong&gt;アクティビティ&lt;/strong&gt;（旧名: Rich Presence）という、今遊んでいるゲームや聴いている音楽を自分のプロフィールに表示する機能があります。&#xA;&lt;figure style=&#34;text-align: center; margin: 1.5rem 0;&#34;&gt;&#xD;&#xA;  &lt;img src=&#34;http://localhost:1313/img/posts/wordengine-activity/discord_activity.webp&#34; alt=&#34;&#34;  style=&#34;max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);&#34;&gt;&#xD;&#xA;  &#xD;&#xA;&lt;/figure&gt;&#xD;&#xA;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

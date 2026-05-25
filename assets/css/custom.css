@@ -13,3 +13,137 @@ body.dark-mode {
     right: 20px;
     z-index: 1000;
 }
+
+/* タイトルを最大2行で省略表示（縦幅を固定） */
+.truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+/* 1行で省略表示（タイトル用） */
+.truncate-1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* Lightbox for article images */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.85);
+    z-index: 1200;
+}
+.lightbox-overlay.open {
+    display: flex;
+}
+.lightbox-overlay img {
+    max-width: 95%;
+    max-height: 95%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    border-radius: 6px;
+}
+.lightbox-trigger { cursor: zoom-in; }
+.lightbox-overlay .close-hint {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+}
+
+/* Hide render-hook images during initial parsing to avoid duplicate flash
+   JS will remove the class 'images-hidden' from <html> after dedupe runs */
+.images-hidden .prose-img { visibility: hidden !important; }
+
+/* Close button */
+.lightbox-overlay .close-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 0;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+}
+.lightbox-overlay .close-btn:hover {
+    background: rgba(255,255,255,0.14);
+}
+
+/* Figure / image styling for prose images: subtle shadow and left-aligned caption */
+.prose-img {
+    display: block;
+    margin: 0.7rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(2,6,23,0.07);
+    background-clip: padding-box;
+    text-align: left;
+}
+.prose-img img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+    object-fit: cover;
+}
+.prose-img-caption {
+    display: block;
+    text-align: left;
+    font-size: 0.92rem;
+    color: #6b7280;
+    margin-top: 0.4rem;
+    padding: 0 0.25rem 0.4rem 0.25rem;
+}
+.dark .prose-img-caption { color: #9ca3af; }
+
+/* Qiita embed card — styled to match site theme */
+.qiita-embed-card{ max-width:920px; margin:0.1rem 0; border:1px solid #e6e6e6; border-radius:10px; background: #fff; box-shadow: 0 1px 3px rgba(15,23,42,0.04); }
+.qiita-card-link{ display:block; text-decoration:none; color:inherit; }
+.qiita-card-link, .qiita-card-link .title, .qiita-card-link .excerpt, .qiita-card-link .qiita-badge, .qiita-card-link .qiita-open { text-decoration: none; }
+/* Strongly prevent inherited underline from .prose a:hover: */
+.qiita-card-link * { text-decoration: none !important; }
+/* Ensure the anchor itself never shows the inherited underline from .prose a:hover */
+.prose a.qiita-card-link:hover, .prose a.qiita-card-link:focus { text-decoration: none !important; }
+/* Only underline the small "記事を開く" label on hover/focus */
+.qiita-card-link:hover .qiita-open, .qiita-card-link:focus .qiita-open { text-decoration: underline !important; }
+.qiita-card-frame{ overflow:hidden; border-radius:10px; position:relative; display:flex; align-items:center; padding:0.4rem 0.5rem 0.4rem 0.9rem; gap:0.5rem; }
+.qiita-card-frame img, .qiita-avatar{ width:48px; height:48px; border-radius:8px; object-fit:cover; flex:0 0 48px; margin-top: 0.6rem; margin-bottom: 0.6rem; }
+.qiita-card-frame > div, .qiita-card-body{ min-width:0; }
+.qiita-card-frame .title, .qiita-card-body .title{ font-weight:700; font-size:0.98rem; margin-bottom:0.08rem; }
+.qiita-card-frame .excerpt, .qiita-card-body .excerpt{ font-size:0.92rem; color: #6b7280; line-height:1.18; }
+.qiita-card-meta{ display:flex; align-items:center; gap:0.5rem; margin:0.28rem 0 0.36rem 0; padding:0 0.5rem 0.36rem 0.5rem; font-size:0.85rem; color:#6b7280; }
+.qiita-badge{ background:#0ea5a4; color:#fff; padding:0.15rem 0.4rem; border-radius:6px; font-weight:600; font-size:0.75rem; }
+.qiita-open{ opacity:0.95 }
+
+/* Dark mode adjustments */
+.dark .qiita-embed-card{ background: #0f1720; border-color: #2b2f33; box-shadow:none; }
+.dark .qiita-card-frame .excerpt, .dark .qiita-card-meta{ color: #9ca3af; }
+
+/* Reduce visible gap after inline links in Japanese prose where render inserts a newline */
+.prose a { margin-right: -0.22ch; }
+
+@media (max-width:840px){
+    .qiita-embed-card{ max-width:100%; }
+    .qiita-card-frame{ border-radius:8px; }
+    .qiita-card-frame img{ width:40px; height:40px; flex:0 0 40px; }
+}

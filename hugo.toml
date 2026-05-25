@@ -15,6 +15,9 @@ darkmode = "light"
 mainSections = ["post"]
 favicon = "/img/favicon/favicon.ico"
 
+[params.seo]
+jsonld = true
+
 [params.widgets]
 display = true
 mobile = true

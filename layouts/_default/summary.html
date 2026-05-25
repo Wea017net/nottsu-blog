@@ -44,7 +44,7 @@
   <div class="relative p-5 leading-normal max-w-full w-full flex flex-col self-start">
     <a href="{{ .RelPermalink }}" class="group block">
       <div
-        class="text-gray-900 font-bold text-xl mb-2 dark:text-white leading-snug group-hover:text-sky-500 transition-colors duration-200"
+        class="text-gray-900 font-bold text-xl mb-1 dark:text-white leading-snug group-hover:text-sky-500 transition-colors duration-200 truncate-1"
       >
         {{ .Title }}
       </div>
@@ -54,7 +54,7 @@
       </p>
       {{ end }}
     </a>
-    <div class="mt-6 flex items-end justify-between gap-3">
+    <div class="mt-7 flex items-end justify-between gap-3">
       {{ if or .Params.categories .Params.tags }}
         <div class="min-w-0 flex flex-wrap items-center gap-2 text-xs text-gray-500 dark:text-gray-400">
           {{ with .Params.categories }}

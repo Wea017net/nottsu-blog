@@ -1,5 +1,6 @@
 <head>
   {{- partial "analytics" . -}}
+  <script>document.documentElement.classList.add('images-hidden');</script>
   <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ site.Title }}</title>
   <meta charset="utf-8" />
   <meta

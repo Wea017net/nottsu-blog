@@ -6,14 +6,21 @@
     <description>Recent content in Posts on Nottsu blog</description>
     <generator>Hugo</generator>
     <language>ja-JP</language>
-    <lastBuildDate>Fri, 17 Apr 2026 21:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2026 01:00:00 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DiscordにWordEngineの取り組み状況を表示するPreMiD Activityを作ったので紹介</title>
+      <link>http://localhost:1313/post/wordengine-activity/</link>
+      <pubDate>Tue, 26 May 2026 01:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/post/wordengine-activity/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;p&gt;&lt;figure style=&#34;text-align: center; margin: 1.5rem 0;&#34;&gt;&#xD;&#xA;  &lt;img src=&#34;http://localhost:1313/img/posts/wordengine-activity/thumbnail_wordengine.webp&#34; alt=&#34;&#34;  style=&#34;max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);&#34;&gt;&#xD;&#xA;  &#xD;&#xA;&lt;/figure&gt;&#xD;&#xA;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;[!NOTE]&#xA;導入方法だけ読みたい方は&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&lt;a href=&#34;http://localhost:1313/post/wordengine-activity/#導入手順&#34;&gt;導入手順&lt;/a&gt;&#xD;&#xA;まで飛ばしてください。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;&#xA;&lt;p&gt;Discordには&lt;strong&gt;アクティビティ&lt;/strong&gt;（旧名: Rich Presence）という、今遊んでいるゲームや聴いている音楽を自分のプロフィールに表示する機能があります。&#xA;&lt;figure style=&#34;text-align: center; margin: 1.5rem 0;&#34;&gt;&#xD;&#xA;  &lt;img src=&#34;http://localhost:1313/img/posts/wordengine-activity/discord_activity.webp&#34; alt=&#34;&#34;  style=&#34;max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);&#34;&gt;&#xD;&#xA;  &#xD;&#xA;&lt;/figure&gt;&#xD;&#xA;&lt;/p&gt;</description>
+    </item>
     <item>
       <title>はじめまして、未来大</title>
       <link>http://localhost:1313/post/hello-fun/</link>
       <pubDate>Fri, 17 Apr 2026 21:00:00 +0900</pubDate>
       <guid>http://localhost:1313/post/hello-fun/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;p&gt;これは &lt;a href=&#34;https://docs.google.com/spreadsheets/d/1Ptl-kfb4LW0Yjtadzg_K02FETkiydmozWghv4V-ZVs4/&#34;&gt;FUN 入学・卒業ブログリレー 2026&lt;/a&gt; の記事です。&lt;/p&gt;&#xA;&lt;p&gt;はじめまして、のっつです。&lt;br&gt;&#xA;2026年度入学の学部1年生です。&lt;br&gt;&#xA;この春より、公立はこだて未来大学に入学することができたので、改めてこの大学を選んだ理由やこれからやっていきたいことについて、ブログリレーという企画を通して発信していきたいと思います。&lt;/p&gt;</description>
+      <description>&lt;hr&gt;&#xA;&lt;p&gt;これは &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&lt;a href=&#34;https://docs.google.com/spreadsheets/d/1Ptl-kfb4LW0Yjtadzg_K02FETkiydmozWghv4V-ZVs4/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;FUN 入学・卒業ブログリレー 2026&lt;/a&gt;&#xD;&#xA; の記事です。&lt;/p&gt;&#xA;&lt;p&gt;はじめまして、のっつです。&lt;br&gt;&#xA;2026年度入学の学部1年生です。&lt;br&gt;&#xA;この春より、公立はこだて未来大学に入学することができたので、改めてこの大学を選んだ理由やこれからやっていきたいことについて、ブログリレーという企画を通して発信していきたいと思います。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

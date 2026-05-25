@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ja-JP"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-<title>はじめまして、未来大 | Nottsu blog</title>
+<script>document.documentElement.classList.add('images-hidden');</script>
+  <title>はじめまして、未来大 | Nottsu blog</title>
   <meta charset="utf-8" />
   <meta
     name="viewport"
@@ -100,12 +101,13 @@
 
 <meta name="description" content="今まで何をやってきたのか、なぜこの大学に来たのか、何をしたいのかを自己整理する" />
 <meta property="og:site_name" content="Nottsu blog" />
+<meta property="og:title" content="はじめまして、未来大" />
 <meta property="og:description" content="今まで何をやってきたのか、なぜこの大学に来たのか、何をしたいのかを自己整理する" />
 <meta property="og:url" content="http://localhost:1313/post/hello-fun/" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
 <meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="" />
+
 
   <link rel="canonical" href="http://localhost:1313/post/hello-fun/" />
 
@@ -116,11 +118,45 @@
 
 
 
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "http:\/\/localhost:1313\/post\/hello-fun\/"
+    },
+    "headline": "はじめまして、未来大",
+    "description": "今まで何をやってきたのか、なぜこの大学に来たのか、何をしたいのかを自己整理する",
+    "image": ["http:\/\/localhost:1313\/img\/posts\/hello-fun\/thumbnail_2025oc.jpg"],
+    "author": {
+      "@type": "Person",
+      "name": "のっつ"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Nottsu blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/localhost:1313\/"
+      }
+    },
+    "datePublished": "2026-04-17T21:00:00\u002b09:00",
+    "dateModified": "2026-04-17T21:00:00\u002b09:00"
+  }
+  </script>
+
+
+
+
 
 
 
 
   
+    
+      
     
   
 
@@ -327,7 +363,12 @@
       
 
       <div class="prose md:prose-base lg:prose-lg max-w-none dark:prose-invert mt-2"><hr>
-<p>これは <a href="https://docs.google.com/spreadsheets/d/1Ptl-kfb4LW0Yjtadzg_K02FETkiydmozWghv4V-ZVs4/">FUN 入学・卒業ブログリレー 2026</a> の記事です。</p>
+<p>これは 
+
+
+
+<a href="https://docs.google.com/spreadsheets/d/1Ptl-kfb4LW0Yjtadzg_K02FETkiydmozWghv4V-ZVs4/" target="_blank" rel="noopener noreferrer">FUN 入学・卒業ブログリレー 2026</a>
+ の記事です。</p>
 <p>はじめまして、のっつです。<br>
 2026年度入学の学部1年生です。<br>
 この春より、公立はこだて未来大学に入学することができたので、改めてこの大学を選んだ理由やこれからやっていきたいことについて、ブログリレーという企画を通して発信していきたいと思います。</p>
@@ -566,6 +607,23 @@ C#を使ったWindows向けアプリを開発してリリースしたり、disco
         
       </aside>
     </article>
+    
+    <div class="bg-white dark:bg-warmgray-900 rounded-xl shadow-sm p-4 my-4">
+      <div class="grid grid-cols-2 gap-3">
+        <div class="col-span-1">
+          
+        </div>
+        <div class="col-span-1">
+          
+          <a class="next" href="/post/wordengine-activity/">
+            <div class="flex items-center justify-end gap-2 p-3 rounded-lg border-2 border-gray-200 hover:border-sky-400 dark:border-warmgray-700 dark:hover:border-sky-500 transition-colors duration-200 text-sm font-medium text-gray-700 dark:text-gray-300">
+              <span class="truncate">DiscordにWordEngineの取り組み状況を表示するPreMiD Activityを作ったので紹介</span><span class="inline-flex align-middle pb-0.5 "><svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg></span>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+    </div>
     
     
     <div
@@ -1132,6 +1190,98 @@ http://localhost:1313/post/hello-fun/"
         localStorage.theme = "dark";
       }
     }
+  </script>
+  <script>
+    
+    (function(){
+      function createOverlay(){
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.innerHTML = '<img alt="" /><button class="close-btn" aria-label="閉じる">×</button>';
+        document.body.appendChild(overlay);
+        return overlay;
+      }
+
+      var overlay = createOverlay();
+      var overlayImg = overlay.querySelector('img');
+      var closeBtn = overlay.querySelector('.close-btn');
+
+      function openLightbox(src, alt){
+        overlayImg.src = src;
+        overlayImg.alt = alt || '';
+        overlay.classList.add('open');
+        document.documentElement.style.overflow = 'hidden';
+      }
+
+      function closeLightbox(){
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+        document.documentElement.style.overflow = '';
+      }
+
+      overlay.addEventListener('click', function(e){
+        if (e.target === overlay || e.target === overlayImg) closeLightbox();
+      });
+      if (closeBtn) closeBtn.addEventListener('click', function(e){ e.stopPropagation(); closeLightbox(); });
+
+      window.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
+
+      function init(){
+        
+        
+        function dedupeImages(){
+          
+          var imgs = document.querySelectorAll('.prose img');
+          imgs.forEach(function(img){
+            var next = img.nextElementSibling;
+            if (!next) return;
+            if (next.tagName === 'FIGURE'){
+              var figimg = next.querySelector('img');
+              if (!figimg) return;
+              var a = img.currentSrc || img.src;
+              var b = figimg.currentSrc || figimg.src;
+              if (a && b && a === b){
+                
+                figimg.classList.add('lightbox-trigger','prose-img');
+                img.remove();
+              }
+            }
+          });
+          
+          var figs = document.querySelectorAll('figure');
+          figs.forEach(function(fig){
+            var next = fig.nextElementSibling;
+            if (!next || next.tagName !== 'FIGURE') return;
+            var imgA = fig.querySelector('img');
+            var imgB = next.querySelector('img');
+            if (!imgA || !imgB) return;
+            var a = imgA.currentSrc || imgA.src;
+            var b = imgB.currentSrc || imgB.src;
+            if (a && b && a === b){
+              imgB.classList.add('lightbox-trigger','prose-img');
+              fig.remove();
+            }
+          });
+        }
+        dedupeImages();
+
+        
+        document.documentElement.classList.remove('images-hidden');
+
+        
+        var imgs2 = document.querySelectorAll('.prose img');
+        imgs2.forEach(function(img){
+          
+          img.classList.add('prose-img');
+          img.classList.add('lightbox-trigger');
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', function(){ openLightbox(img.currentSrc || img.src, img.alt); });
+        });
+      }
+
+      window.addEventListener('load', init);
+      document.addEventListener('DOMContentLoaded', init);
+    })();
   </script>
 </footer>
 </div>

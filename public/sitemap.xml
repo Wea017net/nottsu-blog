@@ -3,16 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2026-04-17T21:00:00+09:00</lastmod>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/post/wordengine-activity/</loc>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2026-04-17T21:00:00+09:00</lastmod>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2026-04-17T21:00:00+09:00</lastmod>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2026-04-17T21:00:00+09:00</lastmod>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E8%A7%A3%E8%AA%AC/</loc>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/categories/%E9%96%8B%E7%99%BA/</loc>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/%E9%96%8B%E7%99%BA/</loc>
+    <lastmod>2026-05-26T01:00:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/post/hello-fun/</loc>
     <lastmod>2026-04-17T21:00:00+09:00</lastmod>

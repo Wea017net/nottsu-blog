@@ -49,9 +49,10 @@
 {{/* Type */}}
 {{- $.Scratch.SetInMap "seo" "type" "website" -}}
 
-{{- if in (slice "blog" "news") .Type -}}
+{{- /* Treat posts/sections named "post" or types "post","blog","news" as articles */ -}}
+{{- if or (in (slice "blog" "news") .Type) (eq .Section "post") (eq .Type "post") -}}
   {{- $.Scratch.SetInMap "seo" "type" "article" -}}
-{{ else if in (slice "article") .Type }}
+{{- else if eq .Type "event" -}}
   {{- $.Scratch.SetInMap "seo" "type" "event" -}}
 {{- end -}}
 
@@ -76,18 +77,27 @@
   {{ partial "seo/debug" $ }}
 {{ end }}
 
-{{/* Card image priority: embed-image > thumbnail > image > site default */}}
+{{/* Card image priority: .Params.seo.image > .Params.seo.thumbnail > embed-image > thumbnail > image > site default */}}
 {{ $cardImage := "" }}
-{{ with index .Params "embed-image" }}
-  {{ $cardImage = . }}
-{{ else }}
-  {{ with .Params.thumbnail }}
+{{ with .Params.seo }}
+  {{- with .image }}
+    {{ $cardImage = . }}
+  {{- else with .thumbnail }}
+    {{ $cardImage = . }}
+  {{- end -}}
+{{- end }}
+{{ if not $cardImage }}
+  {{ with index .Params "embed-image" }}
     {{ $cardImage = . }}
   {{ else }}
-    {{ with .Params.image }}
+    {{ with .Params.thumbnail }}
       {{ $cardImage = . }}
     {{ else }}
-      {{ $cardImage = $.Site.Params.og_image }}
+      {{ with .Params.image }}
+        {{ $cardImage = . }}
+      {{ else }}
+        {{ $cardImage = $.Site.Params.og_image }}
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

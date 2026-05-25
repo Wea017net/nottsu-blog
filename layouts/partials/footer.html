@@ -75,6 +75,47 @@
       });
     })(window, document);
   </script>
+  <script>
+    // Ensure visible ellipsis for elements with .truncate-1 when CSS fallback doesn't show it.
+    (function () {
+      function applyEllipsis(el) {
+        if (!el) return;
+        var full = el.textContent.trim();
+        // if not overflowing, nothing to do
+        if (el.scrollWidth <= el.clientWidth) return;
+        var lo = 0, hi = full.length, best = '';
+        while (lo <= hi) {
+          var mid = Math.floor((lo + hi) / 2);
+          el.textContent = full.slice(0, mid) + '…';
+          if (el.scrollWidth <= el.clientWidth) {
+            best = el.textContent;
+            lo = mid + 1;
+          } else {
+            hi = mid - 1;
+          }
+        }
+        if (best) el.textContent = best;
+      }
+
+      function run() {
+        var nodes = document.querySelectorAll('.truncate-1');
+        nodes.forEach(function (el) {
+          // reset to full text first (in case of resize)
+          var original = el.getAttribute('data-original-title');
+          if (!original) {
+            el.setAttribute('data-original-title', el.textContent.trim());
+          } else {
+            el.textContent = original;
+          }
+          // apply after a tick to ensure layout
+          setTimeout(function () { applyEllipsis(el); }, 0);
+        });
+      }
+
+      window.addEventListener('load', run);
+      window.addEventListener('resize', function () { setTimeout(run, 100); });
+    })();
+  </script>
   {{ end }}
   <script>
     function setDarkModeIcons(isDark) {
@@ -111,5 +152,97 @@
         localStorage.theme = "dark";
       }
     }
+  </script>
+  <script>
+    // Lightbox script for article images
+    (function(){
+      function createOverlay(){
+        var overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.innerHTML = '<img alt="" /><button class="close-btn" aria-label="閉じる">×</button>';
+        document.body.appendChild(overlay);
+        return overlay;
+      }
+
+      var overlay = createOverlay();
+      var overlayImg = overlay.querySelector('img');
+      var closeBtn = overlay.querySelector('.close-btn');
+
+      function openLightbox(src, alt){
+        overlayImg.src = src;
+        overlayImg.alt = alt || '';
+        overlay.classList.add('open');
+        document.documentElement.style.overflow = 'hidden';
+      }
+
+      function closeLightbox(){
+        overlay.classList.remove('open');
+        overlayImg.src = '';
+        document.documentElement.style.overflow = '';
+      }
+
+      overlay.addEventListener('click', function(e){
+        if (e.target === overlay || e.target === overlayImg) closeLightbox();
+      });
+      if (closeBtn) closeBtn.addEventListener('click', function(e){ e.stopPropagation(); closeLightbox(); });
+
+      window.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
+
+      function init(){
+        // Deduplicate: if a rendered image (prose-img) is immediately followed by a <figure> containing the same src,
+        // move the lightbox class to the figure image and remove the redundant image.
+        function dedupeImages(){
+          // Remove plain-image followed by figure with same src
+          var imgs = document.querySelectorAll('.prose img');
+          imgs.forEach(function(img){
+            var next = img.nextElementSibling;
+            if (!next) return;
+            if (next.tagName === 'FIGURE'){
+              var figimg = next.querySelector('img');
+              if (!figimg) return;
+              var a = img.currentSrc || img.src;
+              var b = figimg.currentSrc || figimg.src;
+              if (a && b && a === b){
+                // keep the figure's image, remove the inline img
+                figimg.classList.add('lightbox-trigger','prose-img');
+                img.remove();
+              }
+            }
+          });
+          // Handle duplicate FIGUREs (both containing same image)
+          var figs = document.querySelectorAll('figure');
+          figs.forEach(function(fig){
+            var next = fig.nextElementSibling;
+            if (!next || next.tagName !== 'FIGURE') return;
+            var imgA = fig.querySelector('img');
+            var imgB = next.querySelector('img');
+            if (!imgA || !imgB) return;
+            var a = imgA.currentSrc || imgA.src;
+            var b = imgB.currentSrc || imgB.src;
+            if (a && b && a === b){
+              imgB.classList.add('lightbox-trigger','prose-img');
+              fig.remove();
+            }
+          });
+        }
+        dedupeImages();
+
+        // Reveal images now that dedupe ran
+        document.documentElement.classList.remove('images-hidden');
+
+        // Attach lightbox handlers to images inside .prose
+        var imgs2 = document.querySelectorAll('.prose img');
+        imgs2.forEach(function(img){
+          // mark as prose-img for consistency
+          img.classList.add('prose-img');
+          img.classList.add('lightbox-trigger');
+          img.style.cursor = 'zoom-in';
+          img.addEventListener('click', function(){ openLightbox(img.currentSrc || img.src, img.alt); });
+        });
+      }
+
+      window.addEventListener('load', init);
+      document.addEventListener('DOMContentLoaded', init);
+    })();
   </script>
 </footer>

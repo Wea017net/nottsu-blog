@@ -1,0 +1,12 @@
+{{/*
+  Render hook for Markdown links.
+  - External links (http/https) will get target="_blank" and rel="noopener noreferrer".
+  - Internal links are rendered normally.
+*/}}
+{{ $href := .Destination | safeURL }}
+{{ $text := .Text | safeHTML }}
+{{ if strings.HasPrefix $href "http" }}
+{{ printf "<a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s</a>" $href $text | safeHTML -}}
+{{ else }}
+{{ printf "<a href=\"%s\">%s</a>" $href $text | safeHTML -}}
+{{ end }}
