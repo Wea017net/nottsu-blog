@@ -45,6 +45,10 @@ archive = "archives"
   source = 'assets/notwatching/hugo_stats\.json'
   target = 'css'
 
+[security]
+  [security.exec]
+    allow = ['^(dart-)?sass$', '^go$', '^git$', '^node$', '^postcss$', '^tailwindcss$']
+
 [module]
   [[module.mounts]]
   source = 'static'
