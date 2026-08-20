@@ -1,3 +1,4 @@
+enableRobotsTXT = true
 baseURL = 'https://blog.nottsu.fun/'
 locale = 'ja-JP'
 hasCJKLanguage = true
