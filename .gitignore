@@ -1,2 +1,19 @@
-tailwindcss
-tailwindcss.exe
+# Node dependencies
+/node_modules/
+
+# Hugo build output and caches
+/public/
+/resources/_gen/
+/.hugo_build.lock
+
+# Locally downloaded Tailwind binaries
+/tailwindcss
+/tailwindcss.exe
+
+# PowerShell cache created when the workspace is used as a home directory
+/Microsoft/
+
+# Local logs and OS metadata
+*.log
+.DS_Store
+Thumbs.db

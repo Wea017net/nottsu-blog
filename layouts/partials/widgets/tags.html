@@ -15,7 +15,7 @@
         {{- $.Scratch.Set "myLimit" (add ($.Scratch.Get "myLimit") 1) }}
         {{- if le ($.Scratch.Get "myLimit") ($.Site.Param `tagslimit`) }}
           <a
-            href="{{ "/tags/" | relLangURL }}{{ $termName | urlize }}"
+            href="{{ printf "/tags/%s/" ($termName | urlize) | relLangURL }}"
             class="inline-block mr-1.5 mb-1.5"
           >
             <span
