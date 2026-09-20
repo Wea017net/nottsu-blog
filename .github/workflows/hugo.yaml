@@ -39,8 +39,10 @@ jobs:
         env:
           HUGO_TAILWINDCSS_BINARY: ./node_modules/.bin/tailwindcss
         run: |
-          hugo
-          hugo --minify
+          # The first pass refreshes hugo_stats.json for Tailwind.
+          # Clean both passes so stale redirect/alias pages cannot be deployed.
+          hugo --gc --cleanDestinationDir
+          hugo --gc --minify --cleanDestinationDir
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

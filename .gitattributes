@@ -1,0 +1,10 @@
+# Hugo/Pagefind のビルドで生成される公開用ファイルを
+# GitHub の言語統計から除外する
+public/** linguist-generated=true
+
+# npm の依存パッケージを GitHub の言語統計から除外する
+node_modules/** linguist-vendored=true
+
+# Hugo のキャッシュ・生成統計を GitHub の言語統計から除外する
+resources/_gen/** linguist-generated=true
+hugo_stats.json linguist-generated=true

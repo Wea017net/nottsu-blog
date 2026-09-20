@@ -29,6 +29,9 @@ category = "categories"
 tag = "tags"
 archive = "archives"
 
+[pagination]
+disableAliases = true
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
