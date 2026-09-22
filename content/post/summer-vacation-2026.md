@@ -11,8 +11,8 @@ seo:
   description: "大学生活初の夏休みを振り返ろう"
   canonical: "https://blog.nottsu.fun/post/summer-vacation-2026/"
   noindex: false
-  image: "/img/posts/summer-vacation-2026/thumbnail.webp"
-  thumbnail: "/img/posts/summer-vacation-2026/thumbnail.webp"
+  image: "/img/posts/summer-vacation-2026/thumbnail_summer-vacation-2026.webp"
+  thumbnail: "/img/posts/summer-vacation-2026/thumbnail_summer-vacation-2026.webp"
 ---
 ---
 ![](/img/posts/summer-vacation-2026/thumbnail_summer-vacation-2026.webp)
