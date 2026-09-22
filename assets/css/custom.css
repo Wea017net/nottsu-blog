@@ -106,6 +106,26 @@ body.dark-mode {
     border-radius: inherit;
     object-fit: cover;
 }
+/* 縦長の本文画像は読みやすさのため表示幅を半分にする */
+.prose-img.is-portrait {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.prose-portrait-pair {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+.prose-portrait-pair > .prose-img,
+.prose-portrait-pair > figure {
+    width: calc(50% - 0.5rem);
+    margin: 0;
+}
+.prose-portrait-pair > figure > .prose-img {
+    width: 100%;
+}
 .prose-img-caption {
     display: block;
     text-align: left;

@@ -30,11 +30,6 @@
     html {
       background-color: #f3f4f6;
       color: #111827;
-      visibility: hidden;
-    }
-
-    html.css-loaded {
-      visibility: visible;
     }
 
     html.dark,
@@ -72,13 +67,6 @@
       }
     }
   </style>
-  <noscript>
-    <style>
-      html {
-        visibility: visible;
-      }
-    </style>
-  </noscript>
   <meta
     property="og:title"
     content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ site.Title }}{{ end }}"
@@ -90,7 +78,6 @@
         <link
           rel="stylesheet"
           href="{{ .RelPermalink }}"
-          onload="document.documentElement.classList.add('css-loaded')"
         />
       {{ else }}
         {{ with . | fingerprint }}
@@ -99,16 +86,7 @@
             href="{{ .RelPermalink }}"
             integrity="{{ .Data.Integrity }}"
             crossorigin="anonymous"
-            onload="document.documentElement.classList.add('css-loaded')"
           />
-          <noscript>
-            <link
-              rel="stylesheet"
-              href="{{ .RelPermalink }}"
-              integrity="{{ .Data.Integrity }}"
-              crossorigin="anonymous"
-            />
-          </noscript>
         {{ end }}
       {{ end }}
     {{ end }}

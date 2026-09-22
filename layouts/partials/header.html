@@ -19,14 +19,24 @@
       <div class="flex md:hidden">
         <div class="py-2">
           <button
+            type="button"
+            class="budoux-toggle focus-visible:outline-none mr-2 text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
+            aria-label="BudouX自動改行：有効（クリックで無効）"
+            aria-pressed="true"
+            title="BudouX自動改行：有効（クリックで無効）"
+          >
+            {{ partial "icon.html" (dict "name" "keyboard_return" "class" "text-lg") }}
+          </button>
+          <button
             onclick="toggleDarkMode()"
             class="darkmode-toggle focus-visible:outline-none mr-1 text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
-            aria-label="Darkmode Toggle Button"
+            aria-label="ライトテーマ"
+            title="ライトテーマ"
           >
-            <span id="icon-moon"
+            <span id="icon-moon" class="hidden"
               >{{ partial "icon.html" (dict "name" "bedtime" "class" "text-lg") }}</span
             >
-            <span id="icon-sun" class="hidden"
+            <span id="icon-sun"
               >{{ partial "icon.html" (dict "name" "sunny" "class" "text-lg") }}</span
             >
           </button>
@@ -68,14 +78,24 @@
         <div class="text-white hidden md:block">
           <span>|</span>
           <button
+            type="button"
+            class="budoux-toggle focus-visible:outline-none hover:opacity-50 duration-200 ml-2 cursor-pointer"
+            aria-label="BudouX自動改行：有効（クリックで無効）"
+            aria-pressed="true"
+            title="BudouX自動改行：有効（クリックで無効）"
+          >
+            {{ partial "icon.html" (dict "name" "keyboard_return" "class" "text-lg") }}
+          </button>
+          <button
             onclick="toggleDarkMode()"
             class="darkmode-toggle focus-visible:outline-none hover:opacity-50 duration-200 ml-2 cursor-pointer"
-            aria-label="Darkmode Toggle Button"
+            aria-label="現在はライトテーマ"
+            title="現在はライトテーマ"
           >
-            <span id="icon2-moon"
+            <span id="icon2-moon" class="hidden"
               >{{ partial "icon.html" (dict "name" "bedtime" "class" "text-lg") }}</span
             >
-            <span id="icon2-sun" class="hidden"
+            <span id="icon2-sun"
               >{{ partial "icon.html" (dict "name" "sunny" "class" "text-lg") }}</span
             >
           </button>
@@ -173,5 +193,67 @@
         closeMenu();
       }
     });
+  })();
+
+  (function () {
+    // v2 resets the initial state to the intended default (enabled), while
+    // continuing to remember choices made with the corrected toggle.
+    var storageKey = "budoux-enabled-v2";
+    var currentEnabled = true;
+
+    function getBudouXEnabled() {
+      return currentEnabled;
+    }
+
+    function loadBudouXEnabled() {
+      try {
+        return localStorage.getItem(storageKey) !== "false";
+      } catch (error) {
+        return true;
+      }
+    }
+
+    function updateBudouXButtons(enabled) {
+      var label = enabled
+        ? "BudouX自動改行：有効（クリックで無効）"
+        : "BudouX自動改行：無効（クリックで有効）";
+
+      document.querySelectorAll(".budoux-toggle").forEach(function (button) {
+        button.setAttribute("aria-pressed", String(enabled));
+        button.setAttribute("aria-label", label);
+        button.setAttribute("title", label);
+      });
+    }
+
+    function setBudouXEnabled(enabled, persist) {
+      currentEnabled = enabled;
+
+      if (persist) {
+        try {
+          localStorage.setItem(storageKey, String(enabled));
+        } catch (error) {
+          // Continue with an in-memory setting when storage is unavailable.
+        }
+      }
+
+      document.documentElement.classList.toggle("budoux-disabled", !enabled);
+      updateBudouXButtons(enabled);
+      window.dispatchEvent(new CustomEvent("budoux:change", {
+        detail: { enabled: enabled }
+      }));
+    }
+
+    window.getBudouXEnabled = getBudouXEnabled;
+    window.setBudouXEnabled = function (enabled) {
+      setBudouXEnabled(Boolean(enabled), true);
+    };
+
+    document.querySelectorAll(".budoux-toggle").forEach(function (button) {
+      button.addEventListener("click", function () {
+        window.setBudouXEnabled(!getBudouXEnabled());
+      });
+    });
+
+    setBudouXEnabled(loadBudouXEnabled(), false);
   })();
 </script>

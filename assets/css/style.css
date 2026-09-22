@@ -160,6 +160,8 @@
 
 .toc-widget a:focus,
 .toc-widget a:focus-visible,
+.budoux-toggle:focus,
+.budoux-toggle:focus-visible,
 .darkmode-toggle:focus,
 .darkmode-toggle:focus-visible {
   outline: none;
@@ -175,6 +177,32 @@
 .budoux-applied {
   word-break: keep-all;
   overflow-wrap: anywhere;
+}
+
+/* BudouX toggle: show a slash while automatic line breaks are disabled. */
+.budoux-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.budoux-toggle::after {
+  content: "";
+  position: absolute;
+  width: 1.35em;
+  height: 2px;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transform: rotate(-45deg);
+  transition: opacity 150ms ease;
+}
+
+.budoux-toggle[aria-pressed="false"]::after {
+  opacity: 1;
 }
 
 /* フローティングボタンの共通スタイル（サイズを厳密統一） */

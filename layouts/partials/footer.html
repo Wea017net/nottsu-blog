@@ -35,7 +35,8 @@
     </p>
     <p class="text-xs mt-1 opacity-80 leading-relaxed">
       Font: <a href="https://seed.line.me/" class="duration-200 hover:opacity-50">LINE Seed JP</a> (SIL OFL 1.1)<br>
-      Library: <a href="https://github.com/google/budoux" class="duration-200 hover:opacity-50">BudouX</a> (Apache-2.0)
+      Library: <a href="https://github.com/google/budoux" class="duration-200 hover:opacity-50">BudouX</a> (Apache-2.0)<br>
+      Icon: <a href="https://fonts.google.com/icons" class="duration-200 hover:opacity-50">Google Material Symbols</a> (<a href="{{ "licenses/google-material-symbols-apache-2.0.txt" | relURL }}" class="duration-200 hover:opacity-50">Apache-2.0 license</a>)
     </p>
   </div>
   {{ if .Site.Params.ad.googleAdSense }}
@@ -123,10 +124,15 @@
       var sunIcon1 = document.getElementById("icon-sun");
       var moonIcon2 = document.getElementById("icon2-moon");
       var sunIcon2 = document.getElementById("icon2-sun");
-      if (moonIcon1) moonIcon1.classList.toggle("hidden", isDark);
-      if (sunIcon1) sunIcon1.classList.toggle("hidden", !isDark);
-      if (moonIcon2) moonIcon2.classList.toggle("hidden", isDark);
-      if (sunIcon2) sunIcon2.classList.toggle("hidden", !isDark);
+      var label = isDark ? "現在はダークモード" : "現在はライトモード";
+      if (moonIcon1) moonIcon1.classList.toggle("hidden", !isDark);
+      if (sunIcon1) sunIcon1.classList.toggle("hidden", isDark);
+      if (moonIcon2) moonIcon2.classList.toggle("hidden", !isDark);
+      if (sunIcon2) sunIcon2.classList.toggle("hidden", isDark);
+      document.querySelectorAll(".darkmode-toggle").forEach(function (button) {
+        button.setAttribute("aria-label", label);
+        button.setAttribute("title", label);
+      });
     }
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (
@@ -235,9 +241,42 @@
         imgs2.forEach(function(img){
           // mark as prose-img for consistency
           img.classList.add('prose-img');
+          function applyPortraitWidth(){
+            if (img.naturalHeight > img.naturalWidth) {
+              img.classList.add('is-portrait');
+            }
+          }
+          applyPortraitWidth();
+          img.addEventListener('load', applyPortraitWidth, { once: true });
           img.classList.add('lightbox-trigger');
           img.style.cursor = 'zoom-in';
           img.addEventListener('click', function(){ openLightbox(img.currentSrc || img.src, img.alt); });
+        });
+
+        // 隣接する縦長画像はペア用のコンテナにまとめて横並びにする
+        document.querySelectorAll('.prose').forEach(function(prose){
+          var children = Array.from(prose.children);
+          var run = [];
+          function flushPortraitRun(){
+            if (run.length < 2) {
+              run = [];
+              return;
+            }
+            var pair = document.createElement('div');
+            pair.className = 'prose-portrait-pair';
+            run[0].parentNode.insertBefore(pair, run[0]);
+            run.forEach(function(item){ pair.appendChild(item); });
+            run = [];
+          }
+          children.forEach(function(child){
+            var image = child.matches('img') ? child : child.querySelector(':scope > img');
+            if (image && image.classList.contains('is-portrait')) {
+              run.push(child);
+            } else {
+              flushPortraitRun();
+            }
+          });
+          flushPortraitRun();
         });
       }
 

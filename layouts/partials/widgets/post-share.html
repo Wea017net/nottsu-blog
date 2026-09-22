@@ -3,6 +3,7 @@
 {{- $title := .Title -}}
 {{- $shareTitle := printf "%s - %s" .Title .Site.Title -}}
 {{- $shareText := printf "%s\n%s" $shareTitle $permalink -}}
+{{- $xShareText := printf "%s\n%s @Nottsu_fun26" $title $permalink -}}
 <div
   class="bg-white dark:bg-warmgray-900 rounded-xl shadow-sm p-5 my-4"
   data-post-share
@@ -20,7 +21,7 @@
   </div>
   <div class="flex flex-wrap gap-2">
     <a
-      href="https://twitter.com/intent/tweet?text={{ $title | urlquery }}%0a&url={{ $permalink | urlquery }}"
+      href="https://twitter.com/intent/tweet?text={{ $xShareText | urlquery }}"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Xでシェア"

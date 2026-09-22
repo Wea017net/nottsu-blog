@@ -5,6 +5,7 @@
 /public/
 /resources/_gen/
 /.hugo_build.lock
+/assets/jsconfig.json
 
 # Locally downloaded Tailwind binaries
 /tailwindcss
