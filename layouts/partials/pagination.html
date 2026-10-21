@@ -1,0 +1,8 @@
+{{- /* Initialize once with the same collection in the head and list body. */ -}}
+{{- $paginator := false -}}
+{{- if .IsHome -}}
+  {{- $paginator = .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) .Site.Params.paginator_pages -}}
+{{- else -}}
+  {{- $paginator = .Paginator -}}
+{{- end -}}
+{{- return $paginator -}}
