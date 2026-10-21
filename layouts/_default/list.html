@@ -18,12 +18,7 @@
       {{ end }}
     </h2>
     {{end}}
-    {{if .IsHome}}
-    {{.Scratch.Set "Paginator" (.Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) (.Site.Params.paginator_pages) )}}
-    {{else}}
-    {{.Scratch.Set "Paginator" .Paginator}}
-    {{end}}
-    {{$paginator:=(.Scratch.Get "Paginator")}}
+    {{ $paginator := partial "pagination.html" . }}
     {{ range $index, $page := $paginator.Pages }}
       {{ $page.Scratch.Set "isFirstSummary" (eq $index 0) }}
       {{ $page.Render "summary" }}

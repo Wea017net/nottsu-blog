@@ -60,10 +60,17 @@
 {{- $.Scratch.SetInMap "seo" "locale" "en_US" -}}
 
 {{/* Canonical */}}
+{{- $canonical := .Permalink -}}
+{{- if and (in (slice "home" "section" "taxonomy" "term") .Kind) (ne .Type "search") -}}
+  {{- $paginator := partial "pagination.html" . -}}
+  {{- if gt $paginator.PageNumber 1 -}}
+    {{- $canonical = $paginator.URL | absURL -}}
+  {{- end -}}
+{{- end -}}
 {{ with .Params.seo.canonical }}
   {{- $.Scratch.SetInMap "seo" "canonical" (. | absURL) -}}
 {{ else }}
-  {{- $.Scratch.SetInMap "seo" "canonical" .Permalink -}}
+  {{- $.Scratch.SetInMap "seo" "canonical" $canonical -}}
 {{ end }}
 
 {{- partial "seo/extend" . -}}
