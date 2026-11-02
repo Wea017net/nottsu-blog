@@ -7,6 +7,9 @@
 /.hugo_build.lock
 /assets/jsconfig.json
 
+# Local scratch files (e.g. CSS dumps for debugging)
+/.tmp/
+
 # Locally downloaded Tailwind binaries
 /tailwindcss
 /tailwindcss.exe
