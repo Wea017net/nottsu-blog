@@ -15,6 +15,7 @@ recentLimit = 5
 darkmode = "light"
 mainSections = ["post"]
 favicon = "/img/favicon/favicon.ico"
+logo = "/img/favicon/android-chrome-512x512.png"
 
 [params.seo]
 jsonld = true
