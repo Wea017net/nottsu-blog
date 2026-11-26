@@ -67,10 +67,6 @@
       }
     }
   </style>
-  <meta
-    property="og:title"
-    content="{{ if not .IsHome }}{{ .Title }}{{ else }}{{ site.Title }}{{ end }}"
-  />
   {{ with resources.Get "css/style.css" }}
     {{ $opts := dict "minify" (not hugo.IsDevelopment) }}
     {{ with . | css.TailwindCSS $opts }}
@@ -93,5 +89,4 @@
   {{ end }}
   {{ partial "seo/print.html" . }}
   {{ block "header_css" . }}{{ end }}
-  <i class="dark hidden"></i>
 </head>

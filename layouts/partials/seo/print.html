@@ -57,7 +57,7 @@
 {{- end -}}
 
 {{/* Language */}}
-{{- $.Scratch.SetInMap "seo" "locale" "en_US" -}}
+{{- $.Scratch.SetInMap "seo" "locale" (replace (site.Language.Locale | default "ja-JP") "-" "_") -}}
 
 {{/* Canonical */}}
 {{- $canonical := .Permalink -}}
